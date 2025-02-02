@@ -17,6 +17,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - Open a terminal with `split` and then `terminal`
 - Use Mason (package manager for Neovim) to install language servers, linters, formatters, and other developer tools
 - LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
+  - p for pulling, P for Pushing, q to leave
 
 
 # Troubleshooting
