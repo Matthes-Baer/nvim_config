@@ -14,7 +14,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - Open `nvim`, then Leader Key + `e`, to open Neo-tree
 - Use `bn` or `bp` to switch buffers on same window and close buffers with `bd` OR use Leader key + "," to go through all active buffers
   - With the buffer from window you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
-- Open a terminal with `split` and then `terminal`
+- Open a terminal with `split` and then `terminal` OR use `Leader Key + f + t or T`
 - Use Mason (package manager for Neovim) to install language servers, linters, formatters, and other developer tools
 - `Leader Key + f + n` to create new file, then `:edit file_name` to name it
 - `Leader Kef + f + b` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
