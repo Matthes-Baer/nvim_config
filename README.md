@@ -16,6 +16,8 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
   - With the buffer from window you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
 - Open a terminal with `split` and then `terminal`
 - Use Mason (package manager for Neovim) to install language servers, linters, formatters, and other developer tools
+- `Leader Key + f + n` to create new file, then `:edit file_name` to name it
+- `Leader Kef + f + b` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
 - LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
   - p for pulling, P for Pushing, q to leave
 
@@ -34,8 +36,16 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - ggf. weitere Informationen/Erklärungen in readme hinzufügen
 - Am Ende Repo public machen, damit ich es klonen könnte
 - How to delete file? Telescope? then delete test.lua and testA.lua
+  - also how to rename?
 - Deutsche Rechtschreibprüfung fehlt
-
+- Notizen machen zu, wie man telescope & co. nutzt:
+  - https://github.com/nvim-telescope/telescope.nvim
+    - muss man hier noch configs für anpassen, dass bspw. fzf-native genutzt wird?
+  - https://github.com/nvim-lua/plenary.nvim
+  - https://github.com/BurntSushi/ripgrep
+  - https://github.com/nvim-telescope/telescope-fzf-native.nvim
+  - https://github.com/sharkdp/fd
+  - https://github.com/nvim-telescope/telescope-file-browser.nvim
 
 
 # Information
