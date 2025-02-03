@@ -11,6 +11,8 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
   - Don't forget to add bin folder to PATH
 
 # Basic Usage
+- `<C-o>` would be CTRL + o
+- `<s-down>` would be Shift + down_arrow
 - Open `nvim`, then Leader Key + `e`, to open Neo-tree
 - Use `bn` or `bp` to switch buffers on same window and close buffers with `bd` OR use Leader key + "," to go through all active buffers
   - With the buffer from window you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
