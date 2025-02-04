@@ -32,7 +32,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 # TODO:
 - Add anything for autocmds, keymaps, or options?
 - Merge Conflict resolver tool -> hatte ich dafür schon was installiert?
-- Notizen machen zu GitLazy oder wie es hieß
+- Notizen machen zu LazyGit, was man dafür installieren muss und wie man es nutzen kann
 - Gibt es ein package für ein besser integriertes terminal?
 - Config aufräumen
 - ggf. weitere Informationen/Erklärungen in readme hinzufügen
@@ -40,7 +40,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - How to delete file? Telescope? then delete test.lua and testA.lua
   - also how to rename?
 - Deutsche Rechtschreibprüfung fehlt
-- Notizen machen zu, wie man telescope & co. nutzt:
+- Notizen machen zu, wie man telescope & co. nutzt und was man vorher installieren muss:
   - https://github.com/nvim-telescope/telescope.nvim
     - muss man hier noch configs für anpassen, dass bspw. fzf-native genutzt wird?
   - https://github.com/nvim-lua/plenary.nvim
@@ -48,6 +48,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
   - https://github.com/nvim-telescope/telescope-fzf-native.nvim
   - https://github.com/sharkdp/fd
   - https://github.com/nvim-telescope/telescope-file-browser.nvim
+- 
 
 
 # Information
