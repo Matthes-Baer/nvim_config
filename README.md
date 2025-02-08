@@ -22,12 +22,13 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - `Leader Kef + f + b` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
 - LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
   - p for pulling, P for Pushing, q to leave
+- When in terminal (`Leader Key + f + t`), use double `ESC` to leave the `terminal` mode
 
 
 # Troubleshooting
 
 - If packages seem broken, try deleting the corresponding nvim-data folder section and restart nvim to trigger a full installation
-  - Remove-Item -Recurse -Force "$env:LOCALAPPDATA\nvim-data\lazy\nvim-treesitter" for example
+  - `Remove-Item -Recurse -Force "$env:LOCALAPPDATA\nvim-data\lazy\nvim-treesitter"` for example (on Windows)
 
 # TODO:
 - Add anything for autocmds, keymaps, or options?
