@@ -56,6 +56,7 @@
 
 
 # TODO:
+- How to close and open new Tabs
 - How to close buffers more effectively (instead of going to each buffer and use :bd)
 - Add anything for autocmds, keymaps, or options?
 - Config aufräumen
