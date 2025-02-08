@@ -1,5 +1,7 @@
+-- Check if lazy.nvim is already existing in the nvim-data directory
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
+-- Clone the lazy.nvim repository if it did not exist yet in the nvim-data directory
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })

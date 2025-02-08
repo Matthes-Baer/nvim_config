@@ -13,17 +13,20 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 # Basic Usage
 - `<C-o>` would be CTRL + o
 - `<s-down>` would be Shift + down_arrow
-- Open `nvim`, then Leader Key + `e`, to open Neo-tree
+- Open `nvim`, then <leader> + `e`, to open Neo-tree
 - Use `bn` or `bp` to switch buffers on same window and close buffers with `bd` OR use Leader key + "," to go through all active buffers
   - With the buffer from window you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
   - Use `Shift + L` to navigate to the forward/right buffer, and use `Shift + H` to move the backwards/left buffer from the current
-- Open a terminal with `split` and then `terminal` OR use `Leader Key + f + t or T`
+- Open a terminal with `split` and then `terminal` OR use `<leader> + f + t or T`
 - Use Mason (package manager for Neovim) to install language servers, linters, formatters, and other developer tools
-- `Leader Key + f + n` to create new file, then `:edit file_name` to name it
+- `<leader> + f + n` to create new file, then `:edit file_name` to name it
 - `Leader Kef + f + b` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
 - LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
   - p for pulling, P for Pushing, q to leave
-- When in terminal (`Leader Key + f + t`), use double `ESC` to leave the `terminal` mode
+- When in terminal (`<leader> + f + t`), use double `ESC` to leave the `terminal` mode
+- Use `:DiffviewOpen` to open the merge-conflict resolver tool, use `:h diffview-merge-tool` to get information on how to use it more effectively 
+- Use `Shift + H` to toggle showing hidden items while on the NeoTree screen
+
 
 
 # Troubleshooting
@@ -31,11 +34,15 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - If packages seem broken, try deleting the corresponding nvim-data folder section and restart nvim to trigger a full installation
   - `Remove-Item -Recurse -Force "$env:LOCALAPPDATA\nvim-data\lazy\nvim-treesitter"` for example (on Windows)
 
+
+# Ongoing ToDos
+- Make notes for Diffview Merge Conflict Resolver and LazyGit and more
+
+
 # TODO:
+- Add LazyDocker (extra was installieren): https://github.com/mgierada/lazydocker.nvim?tab=readme-ov-file
+- Add Toggleterm: https://github.com/akinsho/toggleterm.nvim
 - Add anything for autocmds, keymaps, or options?
-- Merge Conflict resolver tool -> hatte ich dafür schon was installiert?
-- Notizen machen zu LazyGit, was man dafür installieren muss und wie man es nutzen kann
-- Gibt es ein package für ein besser integriertes terminal?
 - Config aufräumen
 - ggf. weitere Informationen/Erklärungen in readme hinzufügen
 - Am Ende Repo public machen, damit ich es klonen könnte
@@ -50,10 +57,11 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
   - https://github.com/nvim-telescope/telescope-fzf-native.nvim
   - https://github.com/sharkdp/fd
   - https://github.com/nvim-telescope/telescope-file-browser.nvim
-- 
+- Mit Next.js-Projekt oder so rumprobieren, um zu testen, welche Common commands mir fehlen würden (bspw. STRG + . oder zur File zu springen etc.?)
+- NeoTest für Jest und Rust ausprobieren (in general.lua plugin file)
 
 
-# Information
+# Additional Information
 
 ## Treesitter (through nvim-treesitter)
 
@@ -87,4 +95,6 @@ DAP allows debugging inside Neovim. It provides:
 👉 It’s like a built-in debugger, similar to VS Code's debugger.
 
 
-Hey this was changed!
+## Colorschemes
+
+Find other colorschemes via `https://github.com/topics/neovim-colorscheme` and adjust them in the lazy.lua file
