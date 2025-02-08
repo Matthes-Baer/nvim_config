@@ -16,6 +16,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - Open `nvim`, then Leader Key + `e`, to open Neo-tree
 - Use `bn` or `bp` to switch buffers on same window and close buffers with `bd` OR use Leader key + "," to go through all active buffers
   - With the buffer from window you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
+  - Use `Shift + L` to navigate to the forward/right buffer, and use `Shift + H` to move the backwards/left buffer from the current
 - Open a terminal with `split` and then `terminal` OR use `Leader Key + f + t or T`
 - Use Mason (package manager for Neovim) to install language servers, linters, formatters, and other developer tools
 - `Leader Key + f + n` to create new file, then `:edit file_name` to name it
@@ -86,4 +87,4 @@ DAP allows debugging inside Neovim. It provides:
 👉 It’s like a built-in debugger, similar to VS Code's debugger.
 
 
-Test for merge conflict
+Hey this was changed!
