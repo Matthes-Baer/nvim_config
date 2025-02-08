@@ -1,32 +1,48 @@
-# 💤 LazyVim
-
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
-
 # Setup
-- git clone this repository (this is based on https://github.com/LazyVim/starter) in $env:LOCALAPPDATA\nvim (on Windows; `~/.config/nvim` on Linux)
+- git clone this repository (this is based on https://github.com/LazyVim/starter) in `$env:LOCALAPPDATA\nvim` (on Windows; `~/.config/nvim` on Linux)
 - Optionally remove .git folder to create a separate repository: Remove-Item -Recurse -Force .git
 - Install lazygit: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation
 - Install LLVM (clang) (not mingw) -> https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
   - Don't forget to add bin folder to PATH
+- Install lazydocker: https://winget.ragerworks.com/package/JesseDuffield.Lazydocker
 
 # Basic Usage
 - `<C-o>` would be CTRL + o
 - `<s-down>` would be Shift + down_arrow
-- Open `nvim`, then <leader> + `e`, to open Neo-tree
 - Use `bn` or `bp` to switch buffers on same window and close buffers with `bd` OR use Leader key + "," to go through all active buffers
   - With the buffer from window you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
   - Use `Shift + L` to navigate to the forward/right buffer, and use `Shift + H` to move the backwards/left buffer from the current
-- Open a terminal with `split` and then `terminal` OR use `<leader> + f + t or T`
 - Use Mason (package manager for Neovim) to install language servers, linters, formatters, and other developer tools
-- `<leader> + f + n` to create new file, then `:edit file_name` to name it
-- `Leader Kef + f + b` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
-- LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
-  - p for pulling, P for Pushing, q to leave
-- When in terminal (`<leader> + f + t`), use double `ESC` to leave the `terminal` mode
+- When having multiple tabs (not just regular buffers), use `gt` to switch to the next tab, or `gT` to switch to the previous tab (`tabn` and `tabp` would also work)
+
+## Plugins
+
+### Diffview
 - Use `:DiffviewOpen` to open the merge-conflict resolver tool, use `:h diffview-merge-tool` to get information on how to use it more effectively 
+
+### LazyGit
+- LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
+  - `p` for pulling, `<s-p>` for Pushing, `q` to leave
+
+### NeoTree
+- Use `<leader>e` to open Neo-tree
 - Use `Shift + H` to toggle showing hidden items while on the NeoTree screen
 
+### lazydocker
+- Open lazydocker: `<leader>ld`
+- To exit the exec shell in a docker from lazydocker: `<C-d>`
+- Use `x` to see all shortcuts inside lazydocker (like `[` or `]` to switch tabs inside the right panel)
+
+## Terminal
+- Open ToggleTerm as tab: `:ToggleTerm direction=tab`
+- When in `terminal` mode use `CTRL + ALT + ß` (or `CTRL + \`) and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
+  - Actually press the `CTRL` key first, not all at the same time
+  - Use `<C-7>` to close the terminal
+- Open a normal terminal (not ToggleTerm) with `:split terminal` or use `<leader>ft or T`
+
+## File Management
+- `<leader>fn` to create new file, then `:edit file_name` to name it
+- `<leader>fb` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
 
 
 # Troubleshooting
@@ -40,14 +56,19 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 
 
 # TODO:
-- Add LazyDocker (extra was installieren): https://github.com/mgierada/lazydocker.nvim?tab=readme-ov-file
-- Add Toggleterm: https://github.com/akinsho/toggleterm.nvim
+- How to close buffers more effectively (instead of going to each buffer and use :bd)
 - Add anything for autocmds, keymaps, or options?
 - Config aufräumen
 - ggf. weitere Informationen/Erklärungen in readme hinzufügen
 - Am Ende Repo public machen, damit ich es klonen könnte
+- Github Copilot plugin hinzufügen
 - How to delete file? Telescope? then delete test.lua and testA.lua
-  - also how to rename?
+  - Einige Telescope Notizen machen und auch zu den folgenden Punkten und ähnlichem:
+    - `<leader>f` .. 
+    - Allgemeine Notizen machen zu grep und ripgrep
+    - also how to rename?
+    - how to create new file?
+    - How to search for files and how to search for specific content in files in current work directory or similar?
 - Deutsche Rechtschreibprüfung fehlt
 - Notizen machen zu, wie man telescope & co. nutzt und was man vorher installieren muss:
   - https://github.com/nvim-telescope/telescope.nvim
