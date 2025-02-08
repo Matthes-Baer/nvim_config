@@ -83,3 +83,6 @@ DAP allows debugging inside Neovim. It provides:
 ✅ Variable inspection
 
 👉 It’s like a built-in debugger, similar to VS Code's debugger.
+
+
+Test for merge conflict
