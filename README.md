@@ -14,6 +14,7 @@
   - Use `Shift + L` to navigate to the forward/right buffer, and use `Shift + H` to move the backwards/left buffer from the current
 - Use Mason (package manager for Neovim) to install language servers, linters, formatters, and other developer tools
 - When having multiple tabs (not just regular buffers), use `gt` to switch to the next tab, or `gT` to switch to the previous tab (`tabn` and `tabp` would also work)
+- Search in file: `<S-?>`
 
 ## Plugins
 
@@ -26,7 +27,8 @@
 
 ### NeoTree
 - Use `<leader>e` to open Neo-tree
-- Use `Shift + H` to toggle showing hidden items while on the NeoTree screen
+- Use `<S-h>` to toggle showing hidden items while on the NeoTree screen
+- Use `<S-r>` to reload (when new files were created, for example)
 
 ### lazydocker
 - Open lazydocker: `<leader>ld`
@@ -43,6 +45,9 @@
 ## File Management
 - `<leader>fn` to create new file, then `:edit file_name` to name it
 - `<leader>fb` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
+  - Commands: `https://github.com/nvim-telescope/telescope-file-browser.nvim#Mappings`
+  - Within the file browser use `c` in normal mode to create new folders and files
+  - Within the file browser, use `r` to rename a file, `<S-r>` for replace
 
 
 # Troubleshooting
@@ -63,12 +68,10 @@
 - ggf. weitere Informationen/Erklärungen in readme hinzufügen
 - Am Ende Repo public machen, damit ich es klonen könnte
 - Github Copilot plugin hinzufügen
-- How to delete file? Telescope? then delete test.lua and testA.lua
+- How to move files (with replace from file browser?)
   - Einige Telescope Notizen machen und auch zu den folgenden Punkten und ähnlichem:
     - `<leader>f` .. 
     - Allgemeine Notizen machen zu grep und ripgrep
-    - also how to rename?
-    - how to create new file?
     - How to search for files and how to search for specific content in files in current work directory or similar?
 - Deutsche Rechtschreibprüfung fehlt
 - Notizen machen zu, wie man telescope & co. nutzt und was man vorher installieren muss:
