@@ -15,6 +15,9 @@
 - Use Mason (package manager for Neovim) to install language servers, linters, formatters, and other developer tools
 - When having multiple tabs (not just regular buffers), use `gt` to switch to the next tab, or `gT` to switch to the previous tab (`tabn` and `tabp` would also work)
 - Search in file: `<S-?>`
+- You can use `:cd` within NeoVim to switch the cwd
+- See the current cwd: `:pwd`
+- To set the cwd to the directory of the currently open file: `:cd %:p:h`
 
 ## Plugins
 
