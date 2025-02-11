@@ -18,6 +18,8 @@
 - You can use `:cd` within NeoVim to switch the cwd
 - See the current cwd: `:pwd`
 - To set the cwd to the directory of the currently open file: `:cd %:p:h`
+- Use `<s-k>` on anything code-related holding information to get the info you probably know from VS Code when hovering over it 
+- Use `:LspRestart` to restart the LSP tool. Use `:LspInfo` for more information on it.
 
 ## Plugins
 
@@ -57,6 +59,7 @@
 
 - If packages seem broken, try deleting the corresponding nvim-data folder section and restart nvim to trigger a full installation
   - `Remove-Item -Recurse -Force "$env:LOCALAPPDATA\nvim-data\lazy\nvim-treesitter"` for example (on Windows)
+- When using Rust with the rust-analyzer LSP plugin and you have an `proc-macro not been built yet` error, try `cargo check` in the terminal and then saving/reloading the file 
 
 
 # Ongoing ToDos
