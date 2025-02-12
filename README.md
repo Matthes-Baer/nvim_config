@@ -40,6 +40,7 @@
 ### LazyGit
 - LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
   - `p` for pulling, `<s-p>` for Pushing, `q` to leave
+  - Use <s-↑|↓> (arrow keys) to select multiple commits, for example
 
 ### NeoTree
 - Use `<leader>e` to open Neo-tree
