@@ -1,18 +1,28 @@
 # Setup
 - git clone this repository (this is based on https://github.com/LazyVim/starter) in `$env:LOCALAPPDATA\nvim` (on Windows; `~/.config/nvim` on Linux)
 - Optionally remove .git folder to create a separate repository: Remove-Item -Recurse -Force .git
-- Install lazygit: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation
+- Install LazyGit: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation
 - Install LLVM (clang) (not mingw) -> https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
   - Don't forget to add bin folder to PATH
-- Install lazydocker: https://winget.ragerworks.com/package/JesseDuffield.Lazydocker
-
+- Install Lazydocker: https://winget.ragerworks.com/package/JesseDuffield.Lazydocker
+- To have spellchecking by NeoVim for other languages than English, you have to add spell files.
+  - _The following explanation is for understanding what was done, to make the German spell check work, all this is already added in this repository. There is no additional action required, the following is just extra information:_
+  - The `options.lua` file is set up, to have a custom spell file directory in `\nvim` (based on your custom configs path), since otherwise you would have to start NeoVim in a terminal with administrator privileges and download the needed files on startup (this won't work, if you don't have the admin permissions).
+  - The files you need are `de.utf-8.spl`, `de.utf-8.sug`, and `de.utf-8.add` for German.
+  - If you are not using the admin permission way, you would have to manually download two of the files which can be done through:
+    - `Invoke-WebRequest -Uri "https://ftp.nluug.nl/vim/runtime/spell/de.utf-8.spl" -OutFile "$env:LOCALAPPDATA\nvim\spell\de.utf-8.spl"` (in PowerShell)
+    - `Invoke-WebRequest -Uri "https://ftp.nluug.nl/vim/runtime/spell/de.utf-8.sug" -OutFile "$env:LOCALAPPDATA\nvim\spell\de.utf-8.sug"` (in PowerShell)
+    - If you want to add special words to the spell list (like "PowerShell"), you have to manually add a `de.utf-8.add` file in the same directory where your other spell files are stored. NeoVim will then automatically also create a `de.utf-8.add.spl` file in the same directory.
+    - This manual setup won't interfere with any spell files placed in the system-wide installation directory of NeoVim since it checks this directory and any custom directories if setup properly, therefore the default English spellchecks can still remain in their original place and don't need to be moved
+    - I don't know how to set all this up for multiple additional languages
+    
 # Basic Usage
 - `<C-o>` would be CTRL + o
 - `<s-down>` would be Shift + down_arrow
 - Use `bn` or `bp` to switch buffers on same window and close buffers with `bd` OR use Leader key + "," to go through all active buffers
   - With the buffer from window you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
   - Use `Shift + L` to navigate to the forward/right buffer, and use `Shift + H` to move the backwards/left buffer from the current
-- Use Mason (package manager for Neovim) to install language servers, linters, formatters, and other developer tools
+- Use Mason (package manager for NeoVim) to install language servers, linters, formatters, and other developer tools
 - When having multiple tabs (not just regular buffers), use `gt` to switch to the next tab, or `gT` to switch to the previous tab (`tabn` and `tabp` would also work)
 - Search in file: `<S-?>`
 - You can use `:cd` within NeoVim to switch the cwd
@@ -20,6 +30,7 @@
 - To set the cwd to the directory of the currently open file: `:cd %:p:h`
 - Use `<s-k>` on anything code-related holding information to get the info you probably know from VS Code when hovering over it 
 - Use `:LspRestart` to restart the LSP tool. Use `:LspInfo` for more information on it.
+- Add specific words to the spell file list: `zg` (not with `:`, just press `zg`, while the cursor is on the word)
 
 ## Plugins
 
@@ -35,10 +46,10 @@
 - Use `<S-h>` to toggle showing hidden items while on the NeoTree screen
 - Use `<S-r>` to reload (when new files were created, for example)
 
-### lazydocker
-- Open lazydocker: `<leader>ld`
-- To exit the exec shell in a docker from lazydocker: `<C-d>`
-- Use `x` to see all shortcuts inside lazydocker (like `[` or `]` to switch tabs inside the right panel)
+### Lazydocker
+- Open Lazydocker: `<leader>ld`
+- To exit the exec shell in a docker from Lazydocker: `<C-d>`
+- Use `x` to see all shortcuts inside Lazydocker (like `[` or `]` to switch tabs inside the right panel)
 
 ## Terminal
 - Open ToggleTerm as tab: `:ToggleTerm direction=tab`
@@ -73,14 +84,13 @@
 - Config aufräumen
 - ggf. weitere Informationen/Erklärungen in readme hinzufügen
 - Am Ende Repo public machen, damit ich es klonen könnte
-- Github Copilot plugin hinzufügen
+- Gitub Copilot plugin hinzufügen
 - How to move files (with replace from file browser?)
   - Einige Telescope Notizen machen und auch zu den folgenden Punkten und ähnlichem:
     - `<leader>f` .. 
     - Allgemeine Notizen machen zu grep und ripgrep
     - How to search for files and how to search for specific content in files in current work directory or similar?
-- Deutsche Rechtschreibprüfung fehlt
-- Notizen machen zu, wie man telescope & co. nutzt und was man vorher installieren muss:
+- Notizen machen zu, wie man telescope & co. nutzen kann und was man vorher installieren muss:
   - https://github.com/nvim-telescope/telescope.nvim
     - muss man hier noch configs für anpassen, dass bspw. fzf-native genutzt wird?
   - https://github.com/nvim-lua/plenary.nvim
@@ -93,6 +103,14 @@
 
 
 # Additional Information
+
+## LazyVim
+
+- LazyVim looks for `lua/config/options.lua`, `lua/config/keymaps.lua`, and `lua/config/autocmds.lua` automatically during startup.
+- When LazyVim starts, it sources `lua/config/options.lua`, applying all settings inside it.
+- This happens before plugins are loaded, ensuring that global options (like vim.opt.spelllang) take effect immediately.
+- By default, NeoVim stores custom words in ~/.config/nvim/spell/en.utf-8.add (for English). You can manually edit this file if needed.
+
 
 ## Treesitter (through nvim-treesitter)
 
@@ -118,7 +136,7 @@ LSP provides:
 ## DAP (Debug Adapter Protocol) (through Mason)
 DAP stands for Debug Adapter Protocol, and it is a protocol that allows debugging functionality to be integrated into text editors or IDEs. It enables the connection between a debugging client (like Neovim) and a debugging server (which can be a debugger for a specific programming language). This integration allows you to debug your code directly inside your editor.
 
-DAP allows debugging inside Neovim. It provides:
+DAP allows debugging inside NeoVim. It provides:
 ✅ Breakpoints (F9)
 ✅ Step Over / Step Into / Step Out
 ✅ Variable inspection
