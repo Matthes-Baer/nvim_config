@@ -17,3 +17,6 @@ NeoTest
 config
 DAP
 lua
+fzf
+github
+ripgrep

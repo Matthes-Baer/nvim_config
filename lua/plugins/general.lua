@@ -18,19 +18,45 @@ return {
       })
     end,
   },
+  -- Telescope -> https://github.com/nvim-telescope/telescope.nvim
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-fzf-native.nvim",
+      { "nvim-tree/nvim-web-devicons", opts = {} },
+    },
+    config = function()
+      require("telescope").setup({
+        extensions = {
+          fzf = {
+            -- These are default values, they are just added for easier adjustments if needed
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- smart_case / ignore_case / respect_case
+          },
+        },
+      })
+      -- Load the fzf extension
+      pcall(require("telescope").load_extension("fzf"))
+    end,
+  },
   -- Telescope File Browser -> https://github.com/nvim-telescope/telescope-file-browser.nvim
   {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = {
       "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-fzf-native.nvim",
-      { "nvim-tree/nvim-web-devicons", opts = {} },
     },
+    config = function()
+      require("telescope").load_extension("file_browser")
+    end,
   },
+  -- GitHub Copilot -> https://github.com/github/copilot.vim
+  { "github/copilot.vim" },
   -- ToggleTerm -> https://github.com/akinsho/toggleterm.nvim
   { "akinsho/toggleterm.nvim", version = "*", config = true },
-  -- LazyDocker -> https://github.com/mgierada/lazydocker.nvim
+  -- Lazydocker -> https://github.com/mgierada/lazydocker.nvim
   {
     "mgierada/lazydocker.nvim",
     dependencies = { "akinsho/toggleterm.nvim" },

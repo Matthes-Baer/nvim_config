@@ -5,6 +5,10 @@
 - Install LLVM (clang) (not mingw) -> https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
   - Don't forget to add bin folder to PATH
 - Install Lazydocker: https://winget.ragerworks.com/package/JesseDuffield.Lazydocker
+- Install ripgrep: https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation
+- Install fd (winget install --id sharkdp.fd): https://github.com/sharkdp/fd?tab=readme-ov-file#installation
+- Install make (needed for fzf-native (see Telescope section below)): https://winget.ragerworks.com/package/GnuWin32.Make
+  - Don't forget to add bin folder to PATH (probably at like `C:\Program Files (x86)\GnuWin32\bin`)
 - To have spellchecking by NeoVim for other languages than English, you have to add spell files.
   - _The following explanation is for understanding what was done, to make the German spell check work, all this is already added in this repository. There is no additional action required, the following is just extra information:_
   - The `options.lua` file is set up, to have a custom spell file directory in `\nvim` (based on your custom configs path), since otherwise you would have to start NeoVim in a terminal with administrator privileges and download the needed files on startup (this won't work, if you don't have the admin permissions).
@@ -32,7 +36,10 @@
 - Use `:LspRestart` to restart the LSP tool. Use `:LspInfo` for more information on it.
 - Add specific words to the spell file list: `zg` (not with `:`, just press `zg`, while the cursor is on the word)
 
-## Plugins
+## Plugin Usage
+
+### Telescope
+- Find all available pickers: `:Telescope`
 
 ### Diffview
 - Use `:DiffviewOpen` to open the merge-conflict resolver tool, use `:h diffview-merge-tool` to get information on how to use it more effectively 
@@ -76,34 +83,46 @@
 
 # Ongoing ToDos
 - Make notes for Diffview Merge Conflict Resolver and LazyGit and more
+- Try out GitHub Copilot and note down most important commands
 
 
 # TODO:
 - How to close and open new Tabs
 - How to close buffers more effectively (instead of going to each buffer and use :bd)
 - Add anything for autocmds, keymaps, or options?
-- Config aufräumen
-- ggf. weitere Informationen/Erklärungen in readme hinzufügen
 - Am Ende Repo public machen, damit ich es klonen könnte
-- Gitub Copilot plugin hinzufügen
-- How to move files (with replace from file browser?)
+- How to move files (with "replace" from file browser?)
   - Einige Telescope Notizen machen und auch zu den folgenden Punkten und ähnlichem:
     - `<leader>f` .. 
-    - Allgemeine Notizen machen zu grep und ripgrep
     - How to search for files and how to search for specific content in files in current work directory or similar?
-- Notizen machen zu, wie man telescope & co. nutzen kann und was man vorher installieren muss:
-  - https://github.com/nvim-telescope/telescope.nvim
+    - how to use the file browser
+    - how to use live_grep via ripgrep and how to use find with fd etc.
+    - how to use...
+    - https://github.com/nvim-telescope/telescope.nvim checken für commands und was die machen (notieren), beispielsweise live_grep von ripgrep?
     - muss man hier noch configs für anpassen, dass bspw. fzf-native genutzt wird?
   - https://github.com/nvim-lua/plenary.nvim
-  - https://github.com/BurntSushi/ripgrep
-  - https://github.com/nvim-telescope/telescope-fzf-native.nvim
-  - https://github.com/sharkdp/fd
-  - https://github.com/nvim-telescope/telescope-file-browser.nvim
 - Mit Next.js-Projekt oder so rumprobieren, um zu testen, welche Common commands mir fehlen würden (bspw. STRG + . oder zur File zu springen etc.?)
 - NeoTest für Jest und Rust ausprobieren (in general.lua plugin file)
 
 
 # Additional Information
+
+## Telescope
+
+A fuzzy finder for Neovim, with the following plugins and tools:
+
+*The following is included in the current setup:*
+- telescope-file-browser.nvim → A file browser extension for Telescope that allows interactive file navigation.
+- telescope.nvim → The core fuzzy finder framework for Neovim.
+- plenary.nvim → A utility library required by Telescope for Lua functions and async operations.
+- telescope-fzf-native.nvim → A native FZF sorter for faster fuzzy searching within Telescope.
+  - Fuzzy search is a type of search algorithm that finds results even if the input is partially incorrect, incomplete, or out of order. Instead of requiring an exact match, it ranks potential matches based on relevance and similarity.
+- nvim-web-devicons → Provides file icons for an enhanced UI.
+- ripgrep (rg) → A fast command-line search tool used for live grep and other functionality in Telescope.
+- fd → A faster alternative to find, used by Telescope to locate files efficiently.
+
+To get fzf-native (for telescope-fzf-native (https://github.com/nvim-telescope/telescope-fzf-native.nvim)) working, you need to build it with either cmake or make. It's not shipped via binaries. However, this does not seem to properly work when trying to build it within the configs with LazyVim - https://www.reddit.com/r/neovim/comments/183pj1i/how_to_resolve_fzf_extension_doesnt_exist_or_isnt/?rdt=43798 -> Instead, build it manually yourself (this is where `make` is required). Go to `C:\Users\<user_name>\AppData\Local\nvim-data\lazy\telescope-fzf-native.nvim` or wherever it's stored and use `make`. It's automatically used as soon as it's working (use `:checkhealth telescope` to check if the `fzf` section is included).
+
 
 ## LazyVim
 
@@ -147,4 +166,5 @@ DAP allows debugging inside NeoVim. It provides:
 
 ## Colorschemes
 
-Find other colorschemes via `https://github.com/topics/neovim-colorscheme` and adjust them in the lazy.lua file
+Find other colorschemes via `https://github.com/topics/neovim-colorscheme` or `<leader>uC` and adjust them in the lazy.lua file
+
