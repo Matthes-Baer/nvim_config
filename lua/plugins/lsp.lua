@@ -61,6 +61,7 @@ return {
           "tsx",
           "vim",
           "yaml",
+          "powershell",
         },
         highlight = { enable = true },
         indent = { enable = true },
