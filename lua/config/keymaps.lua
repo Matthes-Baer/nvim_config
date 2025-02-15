@@ -9,4 +9,4 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help ta
 
 vim.keymap.set("n", "<space>fb", function()
   require("telescope").extensions.file_browser.file_browser()
-end)
+end, { desc = "Telescope File Browser" })

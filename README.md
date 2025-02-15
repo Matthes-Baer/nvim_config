@@ -1,6 +1,6 @@
 # Setup
 - git clone this repository (this is based on https://github.com/LazyVim/starter) in `$env:LOCALAPPDATA\nvim` (on Windows; `~/.config/nvim` on Linux)
-- Optionally remove .git folder to create a separate repository: Remove-Item -Recurse -Force .git
+- Optionally remove .git folder to create a separate repository: `Remove-Item -Recurse -Force .git` or directly via nvim
 - Install LazyGit: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation
 - Install LLVM (clang) (not mingw) -> https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
   - Don't forget to add bin folder to PATH
@@ -9,8 +9,10 @@
 - Install fd (winget install --id sharkdp.fd): https://github.com/sharkdp/fd?tab=readme-ov-file#installation
 - Install make (needed for fzf-native (see Telescope section below)): https://winget.ragerworks.com/package/GnuWin32.Make
   - Don't forget to add bin folder to PATH (probably at like `C:\Program Files (x86)\GnuWin32\bin`)
-- To have spellchecking by NeoVim for other languages than English, you have to add spell files.
-  - _The following explanation is for understanding what was done, to make the German spell check work, all this is already added in this repository. There is no additional action required, the following is just extra information:_
+
+## Additional Setup Information
+- _The following explanation is for understanding what was done, to make the German spell check work, all this is already added in this repository. There is no additional action required, the following is just extra information:_
+  - To have spellchecking by NeoVim for other languages than English, you have to add spell files.
   - The `options.lua` file is set up, to have a custom spell file directory in `\nvim` (based on your custom configs path), since otherwise you would have to start NeoVim in a terminal with administrator privileges and download the needed files on startup (this won't work, if you don't have the admin permissions).
   - The files you need are `de.utf-8.spl`, `de.utf-8.sug`, and `de.utf-8.add` for German.
   - If you are not using the admin permission way, you would have to manually download two of the files which can be done through:
@@ -23,12 +25,7 @@
 # Basic Usage
 - `<C-o>` would be CTRL + o
 - `<s-down>` would be Shift + down_arrow
-- Use `bn` or `bp` to switch buffers on same window and close buffers with `bd` OR use Leader key + "," to go through all active buffers
-  - With the buffer from window you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
-  - Use `Shift + L` to navigate to the forward/right buffer, and use `Shift + H` to move the backwards/left buffer from the current
 - Use Mason (package manager for NeoVim) to install language servers, linters, formatters, and other developer tools
-- When having multiple tabs (not just regular buffers), use `gt` to switch to the next tab, or `gT` to switch to the previous tab (`tabn` and `tabp` would also work)
-- Search in file: `<S-?>`
 - You can use `:cd` within NeoVim to switch the cwd
 - See the current cwd: `:pwd`
 - To set the cwd to the directory of the currently open file: `:cd %:p:h`
@@ -36,10 +33,55 @@
 - Use `:LspRestart` to restart the LSP tool. Use `:LspInfo` for more information on it.
 - Add specific words to the spell file list: `zg` (not with `:`, just press `zg`, while the cursor is on the word)
 
-## Plugin Usage
+## Buffers
+- All buffer commands: `<leader>b`
+- `<leader>bd` to delete current one
+- `<leader>bo` to delete all the other buffers
+- Use `Shift + L` to navigate to the forward/right buffer, and use `Shift + H` to move the backwards/left buffer from the current
+  - Or use `bn` or `bp` to switch buffers on same window and close buffers with `bd`
+- `<leader>,` to go through all active buffers
+  - There you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
 
-### Telescope
+## Tabs
+- All tab commands: `<leader>Tab`
+- When having multiple tabs, use `gt` to switch to the next tab, or `gT` to switch to the previous tab 
+  - Or use `:tabn` and `:tabp` for this
+
+## Terminal
+- Open ToggleTerm as tab: `:ToggleTerm direction=tab`
+- When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
+  - Actually press the `CTRL` key first, not all at the same time
+  - Use `<C-7>` to close the terminal
+- Open a normal terminal (not ToggleTerm) with `:split terminal` or use `<leader>ft or T`
+- When there is no additional active buffer, you won't see the tab indexes on the top right
+
+## More Plugin Usage
+
+### File Management & File Searching (includes general commands)
+- General search in file: `<S-?>`
+- `<leader>fn` to create new file, then `:edit file_name` to name it
+
+#### Telescope
 - Find all available pickers: `:Telescope`
+- `<leader>fg` for live_grep to look through the content of all files in the cwd
+- `<leader>fb` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
+  - Commands: `https://github.com/nvim-telescope/telescope-file-browser.nvim#Mappings`
+  - Within the file browser use `c` in normal mode to create new folders and files
+  - Within the file browser, use `r` to rename a file, `<S-r>` for replace
+
+#### NeoTree
+- Use `<leader>e` to open NeoTree
+- Use `<s-?>` to see all commands in NeoTree
+- Use `<S-h>` to toggle showing hidden items while on the NeoTree screen
+- Use `<S-r>` to reload (when new files were created, for example)
+- `d` for deleting
+- `c` for copying to another place (e.g. `my_file` to `/another_directory/my_file`)
+- `m` for moving to another place (this seems to be broken currently)
+- `a` for creating new directory or file
+- `r` for renaming (can also be used to move files when adding the new path for the file (use `../` to move file to parent directory))
+- `b` for new base name (switching base names won't affect the file ending)
+- `o` to order files
+- `i` to get file information
 
 ### Diffview
 - Use `:DiffviewOpen` to open the merge-conflict resolver tool, use `:h diffview-merge-tool` to get information on how to use it more effectively 
@@ -49,58 +91,30 @@
   - `p` for pulling, `<s-p>` for Pushing, `q` to leave
   - Use <s-↑|↓> (arrow keys) to select multiple commits, for example
 
-### NeoTree
-- Use `<leader>e` to open Neo-tree
-- Use `<S-h>` to toggle showing hidden items while on the NeoTree screen
-- Use `<S-r>` to reload (when new files were created, for example)
-
 ### Lazydocker
 - Open Lazydocker: `<leader>ld`
-- To exit the exec shell in a docker from Lazydocker: `<C-d>`
+- To exit the exec shell in a docker container from Lazydocker: `<C-d>`
 - Use `x` to see all shortcuts inside Lazydocker (like `[` or `]` to switch tabs inside the right panel)
-
-## Terminal
-- Open ToggleTerm as tab: `:ToggleTerm direction=tab`
-- When in `terminal` mode use `CTRL + ALT + ß` (or `CTRL + \`) and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
-  - Actually press the `CTRL` key first, not all at the same time
-  - Use `<C-7>` to close the terminal
-- Open a normal terminal (not ToggleTerm) with `:split terminal` or use `<leader>ft or T`
-
-## File Management
-- `<leader>fn` to create new file, then `:edit file_name` to name it
-- `<leader>fb` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
-  - Commands: `https://github.com/nvim-telescope/telescope-file-browser.nvim#Mappings`
-  - Within the file browser use `c` in normal mode to create new folders and files
-  - Within the file browser, use `r` to rename a file, `<S-r>` for replace
 
 
 # Troubleshooting
-
-- If packages seem broken, try deleting the corresponding nvim-data folder section and restart nvim to trigger a full installation
+- If packages seem broken, try deleting the corresponding nvim-data folder section and restart nvim to trigger a full reinstall
   - `Remove-Item -Recurse -Force "$env:LOCALAPPDATA\nvim-data\lazy\nvim-treesitter"` for example (on Windows)
 - When using Rust with the rust-analyzer LSP plugin and you have an `proc-macro not been built yet` error, try `cargo check` in the terminal and then saving/reloading the file 
 
 
 # Ongoing ToDos
-- Make notes for Diffview Merge Conflict Resolver and LazyGit and more
+- Add more notes for Diffview Merge Conflict Resolver, LazyGit, Lazydocker, and more
 - Try out GitHub Copilot and note down most important commands
+- Update autocmds, keymaps, or options (in `lua/config`)
+- Fix NeoTree move command (`m`)
+- Potentially add a shortcut command for this step:
+  - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
 
 
 # TODO:
-- How to close and open new Tabs
-- How to close buffers more effectively (instead of going to each buffer and use :bd)
-- Add anything for autocmds, keymaps, or options?
+- How to change size of Window (for Neotree and other)
 - Am Ende Repo public machen, damit ich es klonen könnte
-- How to move files (with "replace" from file browser?)
-  - Einige Telescope Notizen machen und auch zu den folgenden Punkten und ähnlichem:
-    - `<leader>f` .. 
-    - How to search for files and how to search for specific content in files in current work directory or similar?
-    - how to use the file browser
-    - how to use live_grep via ripgrep and how to use find with fd etc.
-    - how to use...
-    - https://github.com/nvim-telescope/telescope.nvim checken für commands und was die machen (notieren), beispielsweise live_grep von ripgrep?
-    - muss man hier noch configs für anpassen, dass bspw. fzf-native genutzt wird?
-  - https://github.com/nvim-lua/plenary.nvim
 - Mit Next.js-Projekt oder so rumprobieren, um zu testen, welche Common commands mir fehlen würden (bspw. STRG + . oder zur File zu springen etc.?)
 - NeoTest für Jest und Rust ausprobieren (in general.lua plugin file)
 
