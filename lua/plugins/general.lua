@@ -76,6 +76,13 @@ return {
       },
     },
   },
+  -- Comment -> https://github.com/numToStr/Comment.nvim
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  },
   -- NeoTest -> https://github.com/nvim-neotest/neotest
   {
     "nvim-neotest/neotest",
@@ -93,44 +100,6 @@ return {
     },
     config = function()
       require("neotest").setup({
-        log_level = vim.log.levels.WARN, -- or "info", "debug"
-        consumers = {}, -- Add any consumer functions here
-        icons = {}, -- Customize icons if needed
-        highlights = {}, -- Customize highlight groups
-
-        floating = {
-          border = "rounded",
-          max_height = 0.8,
-          max_width = 0.8,
-          options = {},
-        },
-
-        strategies = {
-          integrated = {
-            width = 120,
-            height = 40,
-          },
-        },
-
-        run = {
-          enabled = true,
-        },
-
-        summary = {
-          enabled = true,
-          animated = true,
-          follow = true,
-          expand_errors = true,
-          mappings = {},
-          open = false,
-          count = 0,
-        },
-
-        output = {
-          enabled = true,
-          open_on_run = "short",
-        },
-
         adapters = {
           require("neotest-python")({
             dap = { justMyCode = false },
@@ -138,13 +107,18 @@ return {
           require("neotest-plenary"),
           require("neotest-vim-test")({
             -- Ignore file_types which are already handled by manually installed test adapters
-            ignore_file_types = { "python", "vim", "lua", "javascript", "typescript", "rust", "cpp", "c" },
+            ignore_file_types = { "python", "vim", "lua", "rust", "cpp", "c" },
           }),
           require("neotest-rust")({
             args = { "--no-capture" },
           }),
-          require("neotest-gtest").setup({}),
-          require("neotest-jest"),
+          require("neotest-jest")({
+            jestCommand = "npm test --",
+            env = { CI = true },
+            cwd = function()
+              return vim.fn.getcwd()
+            end,
+          }),
         },
       })
     end,
