@@ -1,4 +1,15 @@
 return {
+  -- Use custom options for colorscheme (to make it transparent)
+  {
+    "tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
   -- NeoTree -> https://github.com/nvim-neo-tree/neo-tree.nvim
   {
     "nvim-neo-tree/neo-tree.nvim",
