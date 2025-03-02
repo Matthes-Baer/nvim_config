@@ -130,6 +130,7 @@
   - `Remove-Item -Recurse -Force "$env:LOCALAPPDATA\nvim-data\lazy\nvim-treesitter"` for example (on Windows)
 - When using Rust with the rust-analyzer LSP plugin and you have an `proc-macro not been built yet` error, try `cargo check` in the terminal and then saving/reloading the file
 - When deleting the nvim-data (for a full reinstall), remember to manually build the telescope-fzf-native and also run `:Lazy clean` and/or lazy sync and update if having additional problems that something couldn't properly load in.
+- When it seems like that the custom overwrites of some keys in the `<leader>` menu are back to their default, close and reopen the current nvim session.
 
 
 # Ongoing ToDos
