@@ -131,10 +131,14 @@
 - When using Rust with the rust-analyzer LSP plugin and you have an `proc-macro not been built yet` error, try `cargo check` in the terminal and then saving/reloading the file
 - When deleting the nvim-data (for a full reinstall), remember to manually build the telescope-fzf-native and also run `:Lazy clean` and/or lazy sync and update if having additional problems that something couldn't properly load in.
 - When it seems like that the custom overwrites of some keys in the `<leader>` menu are back to their default, close and reopen the current nvim session.
+- When having trouble with the Rust DAP, check if `cpptools` and `codelldb` were successfully installed via Mason and check the config to see if the debug_path is actually the correct one (if the work directory makes use of nested directories for their binaries, the debug_path has to be adjusted). Or just use `cargo build` to create the needed binary
 
 
 # Ongoing ToDos
+- Find package/configuration to automatically adjust imports if files are moved to different directories
+  - potential source: https://www.reddit.com/r/neovim/comments/187wwfa/anything_in_neovim_land_that_can_update_js/
 - NeoTest seems to be broken right now (at least for jest), find fix or alternative?
+- Test more with Debug for Rust and Node and apply fixes if needed
 - Add more notes for Diffview Merge Conflict Resolver, LazyGit, Lazydocker, and more
 - Try out GitHub Copilot and note down most important commands
 - Update autocmds, keymaps, or options (in `lua/config`)
