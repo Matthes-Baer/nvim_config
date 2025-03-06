@@ -30,6 +30,7 @@
 
 - `<C-o>` would be CTRL + o
 - `<s-down>` would be Shift + down_arrow
+- `<M-s>` would be meta key (oftentimes Alt key)
 - Use Mason (package manager for NeoVim) to install language servers, linters, formatters, and other developer tools
 - You can use `:cd` within NeoVim to switch the cwd
 - See the current cwd: `:pwd`
