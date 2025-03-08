@@ -66,7 +66,18 @@ return {
   -- GitHub Copilot -> https://github.com/github/copilot.vim
   { "github/copilot.vim" },
   -- ToggleTerm -> https://github.com/akinsho/toggleterm.nvim
-  { "akinsho/toggleterm.nvim", version = "*", config = true },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function()
+      require("toggleterm").setup({
+        direction = "tab",
+        shell = "pwsh",
+        shade_terminals = false,
+        persist_mode = true,
+      })
+    end,
+  },
   -- Lazydocker -> https://github.com/mgierada/lazydocker.nvim
   {
     "mgierada/lazydocker.nvim",
