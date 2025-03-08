@@ -42,7 +42,6 @@
 - Use `<C-x><C-o>` in normal mode to trigger code completion suggestion (Omni Completion)
 
 ## Buffers
-
 - All buffer commands: `<leader>b`
 - `<leader>bd` to delete current one
 - `<leader>bo` to delete all the other buffers
@@ -52,14 +51,12 @@
   - There you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
 
 ## Tabs
-
 - All tab commands: `<leader>Tab`
 - When having multiple tabs, use `gt` to switch to the next tab, or `gT` to switch to the previous tab
   - Or use `:tabn` and `:tabp` for this
 
 ## Terminal
-
-- Open ToggleTerm as tab: `:ToggleTerm direction=tab`
+- Open ToggleTerm (I have `tab` as default mode): `:ToggleTerm`
 - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
   - Actually press the `CTRL` key first, not all at the same time
   - Use `<C-7>` to close the terminal
@@ -102,7 +99,9 @@
 - Use `:DiffviewOpen` to open the merge-conflict resolver tool, use `:h diffview-merge-tool` to get information on how to use it more effectively
 
 ### Comment
-- Use `gcc` and `gc` to comment in/out lines/blocks
+- Use `gc` to open comment command menu
+- Use `gcc` for single line commenting in/out (can also be used with multi-select (`v`))
+- Use `gb` for block commenting in/out
 
 ### GitHub Copilot
 - Use `:Copilot setup` to login
@@ -113,13 +112,11 @@
 - Show previous suggestion:	`<M-[>`
 
 ### LazyGit
-
 - LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
   - `p` for pulling, `<s-p>` for Pushing, `q` to leave
   - Use <s-↑|↓> (arrow keys) to select multiple commits, for example
 
 ### Lazydocker
-
 - Open Lazydocker: `<leader>ld`
 - To exit the exec shell in a docker container from Lazydocker: `<C-d>`
 - Use `x` to see all shortcuts inside Lazydocker (like `[` or `]` to switch tabs inside the right panel)
