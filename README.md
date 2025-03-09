@@ -42,6 +42,12 @@
 - Window Resizing with `<C-w><Left>`, `<C-w><Right>`, `<C-w><Up>`, and `<C-w><Down>`
 - Use `<C-x><C-o>` in normal mode to trigger code completion suggestion (Omni Completion)
 - Open the `+goto` menu with `g` -> e.g. jump to the file where a React component is defined with `gd` while the cursor is on the component's name.
+- When you press `y` for "yank" anywhere, you will get a menu of what actions you can perform based on the yank.
+  - `yiw` is to yank the inner word the cursor is on.
+  - `yis` is to yank the inner sentence the cursor is on.
+  - `yib` is to yank stuff inside parentheses.
+  - There are very similar commands when using `d` for the "delete" menu or `c` for the "change" menu or `v` for the "visual" menu.
+    - like `ciw` for replacing the inner word the cursor is on etc.
 
 ## Buffers
 
@@ -149,7 +155,6 @@
 - Test more with Debug for Rust and Node and apply fixes if needed
 - Add more notes for Diffview Merge Conflict Resolver, LazyGit, Lazydocker, and more
 - Try out GitHub Copilot and note down most important commands
-- Update autocmds, keymaps, or options (in `lua/config`)
 - Fix NeoTree move command (`m`)
 - Potentially add a shortcut command for this step:
   - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
