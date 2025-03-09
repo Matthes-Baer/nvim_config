@@ -217,4 +217,6 @@ return {
       require("nvim-treesitter.install").compilers = { "clang" }
     end,
   },
+  -- Treesitter Context - https://github.com/nvim-treesitter/nvim-treesitter-context
+  { "nvim-treesitter/nvim-treesitter-context" },
 }
