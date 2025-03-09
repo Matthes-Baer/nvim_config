@@ -36,21 +36,6 @@ return {
       })
     end,
   },
-
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      local lspconfig = require("lspconfig")
-
-      -- Auto-setup all installed LSPs
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          lspconfig[server_name].setup({})
-        end,
-      })
-    end,
-  },
-
   -- Mason DAP (Auto-install Debuggers)
   {
     "jay-babu/mason-nvim-dap.nvim",

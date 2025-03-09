@@ -2,16 +2,17 @@
 
 - git clone this repository (this is based on https://github.com/LazyVim/starter) in `$env:LOCALAPPDATA\nvim` (on Windows; `~/.config/nvim` on Linux)
 - Optionally remove .git folder to create a separate repository: `Remove-Item -Recurse -Force .git` or directly via nvim
-- Install LazyGit: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation
-- Install LLVM (clang) (not mingw) -> https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
+- Install [LazyGit](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation)
+- Install [LLVM (clang) (not mingw)](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)
   - Don't forget to add bin folder to PATH
-- Install Lazydocker: https://winget.ragerworks.com/package/JesseDuffield.Lazydocker
-- Install ripgrep: https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation
-- Install fd (winget install --id sharkdp.fd): https://github.com/sharkdp/fd?tab=readme-ov-file#installation
-- Install make (needed for fzf-native (see Telescope section below)): https://winget.ragerworks.com/package/GnuWin32.Make
-  - Don't forget to add bin folder to PATH (probably at like `C:\Program Files (x86)\GnuWin32\bin`)
-- To get fzf-native (for telescope-fzf-native (https://github.com/nvim-telescope/telescope-fzf-native.nvim)) working, you need to build it with either cmake or make. It's not shipped via binaries. However, this does not seem to properly work when trying to build it within the configs with LazyVim - https://www.reddit.com/r/neovim/comments/183pj1i/how_to_resolve_fzf_extension_doesnt_exist_or_isnt/?rdt=43798 -> Instead, build it manually yourself (this is where `make` is required). Go to `C:\Users\<user_name>\AppData\Local\nvim-data\lazy\telescope-fzf-native.nvim` or wherever it's stored and use `make`. It's automatically used as soon as it's working (use `:checkhealth telescope` to check if the `fzf` section is included).
-- The `typescript-language-server` LSP needs to be installed manually (https://github.com/Proziam/nvim/commit/e04c7cbe594568ea73a2e9ceda1aaa56ba73aabb) through Mason after start up. This is important to have in mind when deleting and reinstalling all mason packages. Right now at startup a warning should appear, that it doesn't understand "tsserver" ("is not a valid entry ...").
+- Install [Lazydocker](https://winget.ragerworks.com/package/JesseDuffield.Lazydocker)
+- Install [ripgrep](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation)
+- Install [fd (winget install --id sharkdp.fd)](https://github.com/sharkdp/fd?tab=readme-ov-file#installation)
+- Instal [make](https://winget.ragerworks.com/package/GnuWin32.Make) (needed for fzf-native (see Telescope section below))
+- Don't forget to add bin folder to PATH (probably at like `C:\Program Files (x86)\GnuWin32\bin` for Windows)
+- To get fzf-native (for [telescope-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim)) working, you need to build it with either cmake or make. It's not shipped via binaries. However, this does not seem to properly work when trying to build it within the configs with LazyVim (using `build = "make"`) - https://www.reddit.com/r/neovim/comments/183pj1i/how_to_resolve_fzf_extension_doesnt_exist_or_isnt/?rdt=43798 -> Instead, build it manually yourself (this is where `make` is required). Go to `C:\Users\<user_name>\AppData\Local\nvim-data\lazy\telescope-fzf-native.nvim` or wherever it's stored and use `make`. It's automatically used as soon as it's working (use `:checkhealth telescope` to check if the `fzf` section is included).
+- The `typescript-language-server` LSP [needs to be installed manually](https://github.com/Proziam/nvim/commit/e04c7cbe594568ea73a2e9ceda1aaa56ba73aabb) through Mason after start up. This is important to have in mind when deleting and reinstalling all mason packages. Right now at startup a warning should appear, that it doesn't understand "tsserver" ("is not a valid entry ...").
+- If using Rust, install the rust-analyzer from rustup directly (`rustup component add rust-analyzer`) as well as through Mason. If there are still errors, it might be worth, to reinstall rustup, cargo etc. (rustup self uninstall), then reinstall via [the official Rust installer](https://www.rust-lang.org/tools/install), also delete nvim-data in this situation to have a full reset.
 
 ## Additional Setup Information
 
@@ -42,6 +43,7 @@
 - Use `<C-x><C-o>` in normal mode to trigger code completion suggestion (Omni Completion)
 
 ## Buffers
+
 - All buffer commands: `<leader>b`
 - `<leader>bd` to delete current one
 - `<leader>bo` to delete all the other buffers
@@ -51,11 +53,13 @@
   - There you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
 
 ## Tabs
+
 - All tab commands: `<leader>Tab`
 - When having multiple tabs, use `gt` to switch to the next tab, or `gT` to switch to the previous tab
   - Or use `:tabn` and `:tabp` for this
 
 ## Terminal
+
 - Open ToggleTerm (I have `tab` as default mode): `:ToggleTerm`
 - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
   - Actually press the `CTRL` key first, not all at the same time
@@ -99,31 +103,36 @@
 - Use `:DiffviewOpen` to open the merge-conflict resolver tool, use `:h diffview-merge-tool` to get information on how to use it more effectively
 
 ### Comment
+
 - Use `gc` to open comment command menu
 - Use `gcc` for single line commenting in/out (can also be used with multi-select (`v`))
 - Use `gb` for block commenting in/out
 
 ### GitHub Copilot
+
 - Use `:Copilot setup` to login
 - Find more information: `:help Copilot`
-- Accept suggestion:	`<Tab>`
-- Dismiss suggestion:	`<C-]>` or `<Esc>`
-- Show next suggestion:	`<M-]>`
-- Show previous suggestion:	`<M-[>`
+- Accept suggestion: `<Tab>`
+- Dismiss suggestion: `<C-]>` or `<Esc>`
+- Show next suggestion: `<M-]>`
+- Show previous suggestion: `<M-[>`
 
 ### LazyGit
+
 - LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
   - `p` for pulling, `<s-p>` for Pushing, `q` to leave
   - Use <s-↑|↓> (arrow keys) to select multiple commits, for example
 
 ### Lazydocker
+
 - Open Lazydocker: `<leader>ld`
 - To exit the exec shell in a docker container from Lazydocker: `<C-d>`
 - Use `x` to see all shortcuts inside Lazydocker (like `[` or `]` to switch tabs inside the right panel)
 
-
 # Troubleshooting
 
+- When having eslint problems in projects which don't use the same eslint version you have installed via Mason, try rolling back your Mason version.
+  - e.g. eslint_d v14 uses eslint v9 which comes with breaking changes for the config file format. Check your version with `:!eslint_d --version` and roll back by using `MasonInstall eslint_d@13.1.2`, for example, if updating the project's eslint is not an option. eslint-lsp and eslint_d are for real-time linting feedbacks, while using scripts with like `pnpm run lint` use the installed eslint modules to show the summarized linting results of the target directories in your terminal.
 - If packages seem broken, try deleting the corresponding nvim-data folder section and restart nvim to trigger a full reinstall
   - `Remove-Item -Recurse -Force "$env:LOCALAPPDATA\nvim-data\lazy\nvim-treesitter"` for example (on Windows)
 - When using Rust with the rust-analyzer LSP plugin and you have an `proc-macro not been built yet` error, try `cargo check` in the terminal and then saving/reloading the file
@@ -131,8 +140,8 @@
 - When it seems like that the custom overwrites of some keys in the `<leader>` menu are back to their default, close and reopen the current nvim session.
 - When having trouble with the Rust DAP, check if `cpptools` and `codelldb` were successfully installed via Mason and check the config to see if the debug_path is actually the correct one (if the work directory makes use of nested directories for their binaries, the debug_path has to be adjusted). Or just use `cargo build` to create the needed binary
 
-
 # Ongoing ToDos
+
 - Find package/configuration to automatically adjust imports if files are moved to different directories
   - potential source: https://www.reddit.com/r/neovim/comments/187wwfa/anything_in_neovim_land_that_can_update_js/
 - NeoTest seems to be broken right now (at least for jest), find fix or alternative?
@@ -144,8 +153,11 @@
 - Potentially add a shortcut command for this step:
   - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
 
-
 # Additional Information
+
+## null-ls
+
+null-ls is a Neovim plugin that allows you to integrate external formatters, linters, and other tools into the Neovim LSP (Language Server Protocol) ecosystem. It acts as a bridge between Neovim’s built-in LSP client and various external tools that provide formatting, linting, and diagnostics capabilities.
 
 ## Telescope
 
