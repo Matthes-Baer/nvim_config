@@ -41,6 +41,7 @@
 - Add specific words to the spell file list: `zg` (not with `:`, just press `zg`, while the cursor is on the word)
 - Window Resizing with `<C-w><Left>`, `<C-w><Right>`, `<C-w><Up>`, and `<C-w><Down>`
 - Use `<C-x><C-o>` in normal mode to trigger code completion suggestion (Omni Completion)
+- Open the `+goto` menu with `g` -> e.g. jump to the file where a React component is defined with `gd` while the cursor is on the component's name.
 
 ## Buffers
 
