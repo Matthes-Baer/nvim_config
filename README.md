@@ -13,6 +13,7 @@
 - To get fzf-native (for [telescope-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim)) working, you need to build it with either cmake or make. It's not shipped via binaries. However, this does not seem to properly work when trying to build it within the configs with LazyVim (using `build = "make"`) - https://www.reddit.com/r/neovim/comments/183pj1i/how_to_resolve_fzf_extension_doesnt_exist_or_isnt/?rdt=43798 -> Instead, build it manually yourself (this is where `make` is required). Go to `C:\Users\<user_name>\AppData\Local\nvim-data\lazy\telescope-fzf-native.nvim` or wherever it's stored and use `make`. It's automatically used as soon as it's working (use `:checkhealth telescope` to check if the `fzf` section is included).
 - The `typescript-language-server` LSP [needs to be installed manually](https://github.com/Proziam/nvim/commit/e04c7cbe594568ea73a2e9ceda1aaa56ba73aabb) through Mason after start up. This is important to have in mind when deleting and reinstalling all mason packages. Right now at startup a warning should appear, that it doesn't understand "tsserver" ("is not a valid entry ...").
 - If using Rust, install the rust-analyzer from rustup directly (`rustup component add rust-analyzer`) as well as through Mason. If there are still errors, it might be worth, to reinstall rustup, cargo etc. (rustup self uninstall), then reinstall via [the official Rust installer](https://www.rust-lang.org/tools/install), also delete nvim-data in this situation to have a full reset.
+- The markdown-previewer plugin has [trouble with its install process](https://github.com/iamcco/markdown-preview.nvim/issues/188). After the initial Lazy install process, go the plugin's directory in like `../nvim-data\lazy\markdown-preview.nvim` and use `yarn install` (or with npm etc. even though this seems to cause errors when using `:Lazy sync` but it works anyways) to build the plugin.
 
 ## Additional Setup Information
 
@@ -48,6 +49,7 @@
   - `yib` is to yank stuff inside parentheses.
   - There are very similar commands when using `d` for the "delete" menu or `c` for the "change" menu or `v` for the "visual" menu.
     - like `ciw` for replacing the inner word the cursor is on etc.
+- Use `<leader>x` to open the diagnostics/quickfix menu. With `<leader>xx` you can see all the files' errors in a separate window, for example (`<leader>cd` would also work for this, but without opening a new window).
 
 ## Buffers
 
@@ -136,6 +138,10 @@
 - To exit the exec shell in a docker container from Lazydocker: `<C-d>`
 - Use `x` to see all shortcuts inside Lazydocker (like `[` or `]` to switch tabs inside the right panel)
 
+### markdown-previewer
+
+- `:MarkdownPreview` (starts and opens the preview), `:MarkdownPreviewStop` (stops and closes the preview), and `:MarkdownPreviewToggle` (starts and opens or stops and closes the preview) are the three commands for this plugin.
+
 # Troubleshooting
 
 - When having eslint problems in projects which don't use the same eslint version you have installed via Mason, try rolling back your Mason version.
@@ -158,6 +164,7 @@
 - Fix NeoTree move command (`m`)
 - Potentially add a shortcut command for this step:
   - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
+- ? Are there any additional configurations needed to remove unused imports or format them or is it sufficient to have the proper eslint/prettier configs for this?
 
 # Additional Information
 
