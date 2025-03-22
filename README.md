@@ -17,6 +17,7 @@
 
 ## Additional Setup Information
 
+- [Find more information on configuration, plugins etc.](https://www.lazyvim.org/plugins)
 - _The following explanation is for understanding what was done, to make the German spell check work, all this is already added in this repository. There is no additional action required, the following is just extra information:_
   - To have spellchecking by NeoVim for other languages than English, you have to add spell files.
   - The `options.lua` file is set up, to have a custom spell file directory in `\nvim` (based on your custom configs path), since otherwise you would have to start NeoVim in a terminal with administrator privileges and download the needed files on startup (this won't work, if you don't have the admin permissions).
@@ -82,7 +83,11 @@
 
 ### File Management & File Searching (includes general commands)
 
-- General search in file: `<S-?>`
+- Backward search in a file: `<S-ß>`
+- Forward search in a file: `<S-7>`
+  - Jump up to the next backward match: `N`
+  - Jump down to the next forward match: `n`
+  - both commands are the same for the backward search
 - `<leader>fn` to create new file, then `:edit file_name` to name it
 
 #### Telescope
@@ -132,7 +137,7 @@
 
 - LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
   - `p` for pulling, `<s-p>` for Pushing, `q` to leave
-  - Use <s-↑|↓> (arrow keys) to select multiple commits, for example
+  - Use `<S-↑|↓>` (arrow keys) to select multiple commits, for example
 
 ### Lazydocker
 
@@ -162,11 +167,15 @@
 - NeoTest seems to be broken right now (at least for jest), find fix or alternative?
 - Test more with Debug for Rust and Node and apply fixes if needed
 - Add more notes for Diffview Merge Conflict Resolver, LazyGit, Lazydocker, and more
-- Try out GitHub Copilot and note down most important commands
+- Try out GitHub Copilot (inline edits) and note down most important commands
+  - Same for GitHub Copilot Chat (separate plugin)
+  - both plugins can be found in /plugins/general.lua
 - Fix NeoTree move command (`m`)
+- When running `:Lazy sync` a bunch of treesitters fail to compile -> find out why
 - Potentially add a shortcut command for this step:
   - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
 - ? Are there any additional configurations needed to remove unused imports or format them or is it sufficient to have the proper eslint/prettier configs for this?
+- Bring nvim commands from general personal doc to this documentation
 
 # Additional Information
 

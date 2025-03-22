@@ -24,3 +24,8 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- Set the standard line ending format to the default unix format (LF)
 vim.o.fileformat = "unix"
 vim.o.fileformats = "unix"
+
+-- menu,menuone: Completion menu always appears.
+-- noselect,noinsert: Prevents auto-selecting the first item (needed for Copilot Chat).
+-- popup: Enhances experience on Neovim 0.11+.
+vim.o.completeopt = "menu,menuone,noselect,noinsert,popup"
