@@ -50,6 +50,8 @@
   - There are very similar commands when using `d` for the "delete" menu or `c` for the "change" menu or `v` for the "visual" menu.
     - like `ciw` for replacing the inner word the cursor is on etc.
 - Use `<leader>x` to open the diagnostics/quickfix menu. With `<leader>xx` you can see all the files' errors in a separate window, for example (`<leader>cd` would also work for this, but without opening a new window).
+- Find out which fileformat you are using: `:set fileformat?` and `:set fileformats?`
+  - the fileformat "dos" means, it uses the standard line ending format for Windows which would be `CRLF`. For unix the standard line ending format would be `LF`.
 
 ## Buffers
 

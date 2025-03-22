@@ -20,3 +20,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
     vim.wo.spell = false
   end,
 })
+
+-- Set the standard line ending format to the default unix format (LF)
+vim.o.fileformat = "unix"
+vim.o.fileformats = "unix"
