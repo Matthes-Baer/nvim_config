@@ -44,6 +44,7 @@
 - Window Resizing with `<C-w><Left>`, `<C-w><Right>`, `<C-w><Up>`, and `<C-w><Down>`
 - Use `<C-x><C-o>` in normal mode to trigger code completion suggestion (Omni Completion)
 - Open the `+goto` menu with `g` -> e.g. jump to the file where a React component is defined with `gd` while the cursor is on the component's name.
+  - also used for any other "go to definition" situations
 - When you press `y` for "yank" anywhere, you will get a menu of what actions you can perform based on the yank.
   - `yiw` is to yank the inner word the cursor is on.
   - `yis` is to yank the inner sentence the cursor is on.
@@ -171,7 +172,6 @@
   - Same for GitHub Copilot Chat (separate plugin)
   - both plugins can be found in /plugins/general.lua
 - Fix NeoTree move command (`m`)
-- When running `:Lazy sync` a bunch of treesitters fail to compile -> find out why
 - Potentially add a shortcut command for this step:
   - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
 - ? Are there any additional configurations needed to remove unused imports or format them or is it sufficient to have the proper eslint/prettier configs for this?
@@ -213,6 +213,14 @@ Treesitter is mainly used for syntax highlighting and code parsing. It provides:
 ✅ Folding, text objects, and query-based features.
 
 👉 It does NOT provide autocompletion or error checking.
+
+When looking into the running nvim-treesitter plugin with `:checkhealth nvim-treesitter`, you will find out which treesitter parser are active with their features, which include the following:
+
+- `H` -> Highlighting (Syntax highlighting using Treesitter)
+- `L` -> Locals (Capturing and analyzing local variable definitions and scopes)
+- `F` -> Folding (Code folding support)
+- `I` -> Indentation (Treesitter-based indentation)
+- `J` -> Injections (Parsing embedded languages within other languages)
 
 ## LSP (Language Server Protocol) (through Mason)
 
