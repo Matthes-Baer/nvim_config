@@ -21,6 +21,10 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+
+    -- Enable the extra for `none-ls` for formatting and linting
+    { import = "lazyvim.plugins.extras.lsp.none-ls" },
+
     -- import/override with your plugins
     -- This imports all files from the plugins directory
     { import = "plugins" },
