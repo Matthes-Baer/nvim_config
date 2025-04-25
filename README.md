@@ -5,11 +5,11 @@
 - Install [LazyGit](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation)
 - Install [LLVM (clang) (not mingw)](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)
   - Don't forget to add bin folder to PATH
+- Install [make](https://winget.ragerworks.com/package/GnuWin32.Make) (needed for fzf-native (see Telescope section below))
+  - Don't forget to add bin folder to PATH (probably at like `C:\Program Files (x86)\GnuWin32\bin` for Windows)
 - Install [Lazydocker](https://winget.ragerworks.com/package/JesseDuffield.Lazydocker)
 - Install [ripgrep](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation)
 - Install [fd (winget install --id sharkdp.fd)](https://github.com/sharkdp/fd?tab=readme-ov-file#installation)
-- Instal [make](https://winget.ragerworks.com/package/GnuWin32.Make) (needed for fzf-native (see Telescope section below))
-- Don't forget to add bin folder to PATH (probably at like `C:\Program Files (x86)\GnuWin32\bin` for Windows)
 - To get fzf-native (for [telescope-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim)) working, you need to build it with either cmake or make. It's not shipped via binaries. However, this does not seem to properly work when trying to build it within the configs with LazyVim (using `build = "make"`) - https://www.reddit.com/r/neovim/comments/183pj1i/how_to_resolve_fzf_extension_doesnt_exist_or_isnt/?rdt=43798 -> Instead, build it manually yourself (this is where `make` is required). Go to `C:\Users\<user_name>\AppData\Local\nvim-data\lazy\telescope-fzf-native.nvim` or wherever it's stored and use `make`. It's automatically used as soon as it's working (use `:checkhealth telescope` to check if the `fzf` section is included).
 - The `typescript-language-server` LSP [needs to be installed manually](https://github.com/Proziam/nvim/commit/e04c7cbe594568ea73a2e9ceda1aaa56ba73aabb) through Mason after start up. This is important to have in mind when deleting and reinstalling all mason packages. Right now at startup a warning should appear, that it doesn't understand "tsserver" ("is not a valid entry ...").
 - If using Rust, install the rust-analyzer from rustup directly (`rustup component add rust-analyzer`) as well as through Mason. If there are still errors, it might be worth, to reinstall rustup, cargo etc. (rustup self uninstall), then reinstall via [the official Rust installer](https://www.rust-lang.org/tools/install), also delete nvim-data in this situation to have a full reset.
