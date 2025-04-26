@@ -25,6 +25,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
 vim.o.fileformat = "unix"
 vim.o.fileformats = "unix"
 
+-- Format on save
+vim.g.autoformat = true
+
 -- menu,menuone: Completion menu always appears.
 -- noselect,noinsert: Prevents auto-selecting the first item (needed for Copilot Chat).
 -- popup: Enhances experience on Neovim 0.11+.

@@ -147,6 +147,11 @@ return {
 
       null_ls.setup({
         sources = {
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.shfmt,
+          null_ls.builtins.formatting.clang_format,
+
           require("none-ls.code_actions.eslint"),
         },
       })
@@ -169,18 +174,6 @@ return {
           "clang-format", -- C/C++ Formatter
         },
         automatic_installation = true,
-      })
-
-      -- Setup Null-LS
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        sources = {
-          -- Formatting
-          null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.black,
-          null_ls.builtins.formatting.shfmt,
-          null_ls.builtins.formatting.clang_format,
-        },
       })
     end,
   },
