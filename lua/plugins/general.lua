@@ -63,20 +63,6 @@ return {
       require("telescope").load_extension("file_browser")
     end,
   },
-  -- GitHub Copilot -> https://github.com/github/copilot.vim
-  -- Alternative for the case the .vim version may be inefficient: https://github.com/zbirenbaum/copilot.lua
-  { "github/copilot.vim" },
-  -- GitHub Copilot Chat -> https://github.com/CopilotC-Nvim/CopilotChat.nvim
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" },
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
-    },
-    opts = {
-      -- See Configuration section for options
-    },
-  },
 
   -- ToggleTerm -> https://github.com/akinsho/toggleterm.nvim
   {

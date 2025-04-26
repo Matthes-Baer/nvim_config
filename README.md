@@ -1,4 +1,8 @@
-# Setup
+# nvim-config
+
+Not finished, still ongoing
+
+## Setup
 
 - git clone this repository (this is based on https://github.com/LazyVim/starter) in `$env:LOCALAPPDATA\nvim` (on Windows; `~/.config/nvim` on Linux)
 - Optionally remove .git folder to create a separate repository: `Remove-Item -Recurse -Force .git` or directly via nvim
@@ -7,6 +11,7 @@
   - Don't forget to add bin folder to PATH
 - Install [make](https://winget.ragerworks.com/package/GnuWin32.Make) (needed for fzf-native (see Telescope section below))
   - Don't forget to add bin folder to PATH (probably at like `C:\Program Files (x86)\GnuWin32\bin` for Windows)
+- Have in mind, that you will also need a MSVC environment (from Visual Studio, for example) since at this point, you have the `clang` compiler and the `make` tool but no access to standard C headers like `string.h`. You can also use [`MinGW-w64`](https://www.mingw-w64.org/downloads/#mingw-w64-builds) where you want to use like `x86_64-14.2.0-release-posix-seh-ucrt-rt_v12-rev2.7z`, for example. Download this, extract it somewhere and add the `bin` folder to your PATH. This should be enough to get the C headers working. If you are doing this with the `MinGW-w64` way, you will also get access to the `gcc` compiler (this is the compiler, the Makefile expects for `telescope-fzf-native` below, even though you could update the Makefile and compile with `clang` as well).
 - Install [Lazydocker](https://winget.ragerworks.com/package/JesseDuffield.Lazydocker)
 - Install [ripgrep](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation)
 - Install [fd (winget install --id sharkdp.fd)](https://github.com/sharkdp/fd?tab=readme-ov-file#installation)
@@ -15,7 +20,7 @@
 - If using Rust, install the rust-analyzer from rustup directly (`rustup component add rust-analyzer`) as well as through Mason. If there are still errors, it might be worth, to reinstall rustup, cargo etc. (rustup self uninstall), then reinstall via [the official Rust installer](https://www.rust-lang.org/tools/install), also delete nvim-data in this situation to have a full reset.
 - The markdown-previewer plugin has [trouble with its install process](https://github.com/iamcco/markdown-preview.nvim/issues/188). After the initial Lazy install process, go the plugin's directory in like `../nvim-data\lazy\markdown-preview.nvim` and use `yarn install` (or with npm etc. even though this seems to cause errors when using `:Lazy sync` but it works anyways) to build the plugin.
 
-## Additional Setup Information
+### Additional Setup Information
 
 - [Find more information on configuration, plugins etc.](https://www.lazyvim.org/plugins)
 - _The following explanation is for understanding what was done, to make the German spell check work, all this is already added in this repository. There is no additional action required, the following is just extra information:_
@@ -29,7 +34,7 @@
     - This manual setup won't interfere with any spell files placed in the system-wide installation directory of NeoVim since it checks this directory and any custom directories if setup properly, therefore the default English spellchecks can still remain in their original place and don't need to be moved
     - I don't know how to set all this up for multiple additional languages
 
-# Basic Usage
+## Basic Usage
 
 - `<C-o>` would be CTRL + o
 - `<s-down>` would be Shift + down_arrow
@@ -55,7 +60,7 @@
 - Find out which fileformat you are using: `:set fileformat?` and `:set fileformats?`
   - the fileformat "dos" means, it uses the standard line ending format for Windows which would be `CRLF`. For unix the standard line ending format would be `LF`.
 
-## Buffers
+### Buffers
 
 - All buffer commands: `<leader>b`
 - `<leader>bd` to delete current one
@@ -65,13 +70,13 @@
 - `<leader>,` to go through all active buffers
   - There you can search by file name or number and can use arrow keys to go through all buffers besides the current active one
 
-## Tabs
+### Tabs
 
 - All tab commands: `<leader>Tab`
 - When having multiple tabs, use `gt` to switch to the next tab, or `gT` to switch to the previous tab
   - Or use `:tabn` and `:tabp` for this
 
-## Terminal
+### Terminal
 
 - Open ToggleTerm (I have `tab` as default mode): `:ToggleTerm`
 - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
@@ -80,9 +85,16 @@
 - Open a normal terminal (not ToggleTerm) with `:split terminal` or use `<leader>ft or T`
 - When there is no additional active buffer, you won't see the tab indexes on the top right
 
-## More Plugin Usage
+### More Plugin Usage
 
-### File Management & File Searching (includes general commands)
+- If you enable plugins from the LazyVim Extras
+  and also add those plugins in your config,
+  their settings will be merged.
+  This way you can basically just tweak the settings
+  while still having all the base settings,
+  the lazy vim extra implementation added.
+
+#### File Management & File Searching (includes general commands)
 
 - Backward search in a file: `<S-ß>`
 - Forward search in a file: `<S-7>`
@@ -115,17 +127,17 @@
 - `o` to order files
 - `i` to get file information
 
-### Diffview
+#### Diffview
 
 - Use `:DiffviewOpen` to open the merge-conflict resolver tool, use `:h diffview-merge-tool` to get information on how to use it more effectively
 
-### Comment
+#### Comment
 
 - Use `gc` to open comment command menu
 - Use `gcc` for single line commenting in/out (can also be used with multi-select (`v`))
 - Use `gb` for block commenting in/out
 
-### GitHub Copilot
+#### GitHub Copilot
 
 - Use `:Copilot setup` to login
 - Find more information: `:help Copilot`
@@ -134,19 +146,19 @@
 - Show next suggestion: `<M-]>`
 - Show previous suggestion: `<M-[>`
 
-### LazyGit
+#### LazyGit
 
 - LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
   - `p` for pulling, `<s-p>` for Pushing, `q` to leave
   - Use `<S-↑|↓>` (arrow keys) to select multiple commits, for example
 
-### Lazydocker
+#### Lazydocker
 
 - Open Lazydocker: `<leader>ld`
 - To exit the exec shell in a docker container from Lazydocker: `<C-d>`
 - Use `x` to see all shortcuts inside Lazydocker (like `[` or `]` to switch tabs inside the right panel)
 
-### markdown-previewer
+#### markdown-previewer
 
 - `:MarkdownPreview` (starts and opens the preview), `:MarkdownPreviewStop` (stops and closes the preview), and `:MarkdownPreviewToggle` (starts and opens or stops and closes the preview) are the three commands for this plugin.
 
@@ -161,29 +173,33 @@
 - When it seems like that the custom overwrites of some keys in the `<leader>` menu are back to their default, close and reopen the current nvim session.
 - When having trouble with the Rust DAP, check if `cpptools` and `codelldb` were successfully installed via Mason and check the config to see if the debug_path is actually the correct one (if the work directory makes use of nested directories for their binaries, the debug_path has to be adjusted). Or just use `cargo build` to create the needed binary
 
-# Ongoing ToDos
+## Ongoing ToDos
 
 - Find package/configuration to automatically adjust imports if files are moved to different directories
   - potential source: https://www.reddit.com/r/neovim/comments/187wwfa/anything_in_neovim_land_that_can_update_js/
-- NeoTest seems to be broken right now (at least for jest), find fix or alternative?
+- NeoTest seems to be broken right now (at least for jest), find fix or alternative? test.core is a Lazy Extra an works with Neotree I think?
 - Test more with Debug for Rust and Node and apply fixes if needed
 - Add more notes for Diffview Merge Conflict Resolver, LazyGit, Lazydocker, and more
 - Try out GitHub Copilot (inline edits) and note down most important commands
   - Same for GitHub Copilot Chat (separate plugin)
-  - both plugins can be found in /plugins/general.lua
+  - both plugins are enabled via LazyVim Extras (with not custom configs right now)
 - Fix NeoTree move command (`m`)
 - Potentially add a shortcut command for this step:
   - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
 - ? Are there any additional configurations needed to remove unused imports or format them or is it sufficient to have the proper eslint/prettier configs for this?
 - Bring nvim commands from general personal doc to this documentation
+- Configure keymaps for https://github.com/monaqa/dial.nvim
+- Configure keymaps for https://github.com/gbprod/yanky.nvim
+- Configure settings/keymaps for https://github.com/echasnovski/mini.hipatterns
+- Find more information on how to use https://github.com/folke/snacks.nvim/blob/main/docs/picker.md (if I want to use this)
 
-# Additional Information
+## Additional Information
 
-## null-ls
+### null-ls/none-ls
 
-null-ls is a Neovim plugin that allows you to integrate external formatters, linters, and other tools into the Neovim LSP (Language Server Protocol) ecosystem. It acts as a bridge between Neovim’s built-in LSP client and various external tools that provide formatting, linting, and diagnostics capabilities.
+null-ls is a Neovim plugin that allows you to integrate external formatters, linters, and other tools into the Neovim LSP (Language Server Protocol) ecosystem. It acts as a bridge between Neovim’s built-in LSP client and various external tools that provide formatting, linting, and diagnostics capabilities. The original [null-ls plugin](https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main) is not maintained anymore, so the community forked it and called it [none-ls](https://github.com/nvimtools/none-ls.nvim).
 
-## Telescope
+### Telescope
 
 A fuzzy finder for Neovim, with the following plugins and tools:
 
@@ -198,14 +214,14 @@ _The following is included in the current setup:_
 - ripgrep (rg) → A fast command-line search tool used for live grep and other functionality in Telescope.
 - fd → A faster alternative to find, used by Telescope to locate files efficiently.
 
-## LazyVim
+### LazyVim
 
 - LazyVim looks for `lua/config/options.lua`, `lua/config/keymaps.lua`, and `lua/config/autocmds.lua` automatically during startup.
 - When LazyVim starts, it sources `lua/config/options.lua`, applying all settings inside it.
 - This happens before plugins are loaded, ensuring that global options (like vim.opt.spelllang) take effect immediately.
 - By default, NeoVim stores custom words in ~/.config/nvim/spell/en.utf-8.add (for English). You can manually edit this file if needed.
 
-## Treesitter (through nvim-treesitter)
+### Treesitter (through nvim-treesitter)
 
 Treesitter is mainly used for syntax highlighting and code parsing. It provides:
 ✅ Better syntax highlighting (more accurate than regex-based Vim highlighting).
@@ -222,7 +238,7 @@ When looking into the running nvim-treesitter plugin with `:checkhealth nvim-tre
 - `I` -> Indentation (Treesitter-based indentation)
 - `J` -> Injections (Parsing embedded languages within other languages)
 
-## LSP (Language Server Protocol) (through Mason)
+### LSP (Language Server Protocol) (through Mason)
 
 LSP is a protocol that allows editors like Neovim to communicate with language servers, providing features like auto-completion, go to definition, hover documentation, and more for various programming languages.
 
@@ -235,7 +251,7 @@ LSP provides:
 
 👉 LSP is like IntelliSense in VS Code—it makes coding smarter.
 
-## DAP (Debug Adapter Protocol) (through Mason)
+### DAP (Debug Adapter Protocol) (through Mason)
 
 DAP stands for Debug Adapter Protocol, and it is a protocol that allows debugging functionality to be integrated into text editors or IDEs. It enables the connection between a debugging client (like Neovim) and a debugging server (which can be a debugger for a specific programming language). This integration allows you to debug your code directly inside your editor.
 
@@ -246,6 +262,6 @@ DAP allows debugging inside NeoVim. It provides:
 
 👉 It’s like a built-in debugger, similar to VS Code's debugger.
 
-## Colorschemes
+### Colorschemes
 
 Find other colorschemes via `https://github.com/topics/neovim-colorscheme` or `<leader>uC` and adjust them in the lazy.lua file
