@@ -194,6 +194,7 @@ Not finished, still ongoing
 - Configure keymaps for https://github.com/gbprod/yanky.nvim
 - Configure settings/keymaps for https://github.com/echasnovski/mini.hipatterns
 - Find more information on how to use https://github.com/folke/snacks.nvim/blob/main/docs/picker.md (if I want to use this)
+- Create complete overview of all plugins used with basic usage examples (in addition to the inner plugin documentation below)
 
 ## Additional Information
 
