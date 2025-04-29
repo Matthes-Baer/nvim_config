@@ -59,6 +59,7 @@ Not finished, still ongoing
 - Use `<leader>x` to open the diagnostics/quickfix menu. With `<leader>xx` you can see all the files' errors in a separate window, for example (`<leader>cd` would also work for this, but without opening a new window).
 - Find out which fileformat you are using: `:set fileformat?` and `:set fileformats?`
   - the fileformat "dos" means, it uses the standard line ending format for Windows which would be `CRLF`. For unix the standard line ending format would be `LF`.
+- Use `<C-w>` to get to the `+window` menu, use `<C-w>25>` to increase the width by 25% or use `<C-w>5<` to decrease the width by 5% (or decrease height with `<C-w>-` or increase height with `<C-w>+`).
 
 ### Buffers
 
