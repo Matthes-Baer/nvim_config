@@ -175,6 +175,8 @@ Not finished, still ongoing
 
 ## Ongoing ToDos
 
+- Some plugin is breaking with gitsigns in a version around the 29th of April 2025, I put in a commit hash of a version a week prior to this, to fix this. Try to remove the hard-code commit hash to update to the newest version in the near future and check if it's still broken.
+- Gitsigns toggle_current_line_blame not working?
 - Find package/configuration to automatically adjust imports if files are moved to different directories
   - potential source: https://www.reddit.com/r/neovim/comments/187wwfa/anything_in_neovim_land_that_can_update_js/
 - NeoTest seems to be broken right now (at least for jest), find fix or alternative? test.core is a Lazy Extra an works with Neotree I think?

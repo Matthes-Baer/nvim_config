@@ -153,4 +153,9 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    commit = "2149fc2009d1117d58e86e56836f70c969f60a82",
+  },
 }
