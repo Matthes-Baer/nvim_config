@@ -137,6 +137,7 @@ return {
   { "nvim-telescope/telescope-dap.nvim" }, -- Telescope UI for debugging
 
   -- None-LS
+  -- This is needed to have eslint's fix work on save
   {
     "nvimtools/none-ls.nvim",
     dependencies = {
@@ -147,40 +148,44 @@ return {
 
       null_ls.setup({
         sources = {
-          -- Formatter (prettier and eslint formatting)
-          null_ls.builtins.formatting.prettier,
-          require("none-ls.formatting.eslint_d"),
+          -- still useful for diagnostics and code actions
+          require("none-ls.diagnostics.eslint_d"),
+          require("none-ls.code_actions.eslint_d"),
 
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.shfmt,
           null_ls.builtins.formatting.clang_format,
-
-          require("none-ls.diagnostics.eslint_d"),
-          require("none-ls.code_actions.eslint"),
         },
       })
     end,
   },
 
-  -- Mason Null-LS
+  -- Mason
+  -- prettier is needed to still have access to :ConformInfo - prettierd is used for the actual formatting for .ts etc. files
   {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim", "nvimtools/none-ls-extras.nvim" },
-    config = function()
-      require("mason-null-ls").setup({
-        ensure_installed = {
-          -- Formatters
-          "prettier", -- JavaScript/TypeScript Formatter
-          "stylua", -- Lua Formatter
-          "black", -- Python Formatter
-          "shfmt", -- Shell Script Formatter
-          "clang-format", -- C/C++ Formatter
-        },
-        automatic_installation = true,
-      })
-    end,
+    "williamboman/mason.nvim",
+    opts = { ensure_installed = { "stylua", "black", "shfmt", "clang-format", "prettier", "prettierd", "eslint_d" } },
   },
+
+  {
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      log_level = vim.log.levels.DEBUG,
+      formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = { "eslint_d", "prettierd" },
+        typescript = { "eslint_d", "prettierd" },
+        typescriptreact = { "eslint_d", "prettierd" },
+        javascriptreact = { "eslint_d", "prettierd" },
+
+        -- Use the "_" filetype to run formatters on filetypes that don't
+        -- have other formatters configured.
+        ["_"] = { "trim_whitespace" },
+      },
+    },
+  },
+
   -- Treesitter for Syntax Highlighting
   {
     "nvim-treesitter/nvim-treesitter",
@@ -212,7 +217,6 @@ return {
         },
         highlight = { enable = true },
         indent = { enable = true },
-        -- Add any other configurations you want here
       })
 
       -- Set clang as the compiler

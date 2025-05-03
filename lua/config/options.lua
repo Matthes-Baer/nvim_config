@@ -32,3 +32,7 @@ vim.g.autoformat = true
 -- noselect,noinsert: Prevents auto-selecting the first item (needed for Copilot Chat).
 -- popup: Enhances experience on Neovim 0.11+.
 vim.o.completeopt = "menu,menuone,noselect,noinsert,popup"
+
+-- Enable the option to require a Prettier config file
+-- If no prettier config file is found, the formatter will not be used
+vim.g.lazyvim_prettier_needs_config = true

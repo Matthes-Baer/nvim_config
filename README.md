@@ -33,6 +33,7 @@ Not finished, still ongoing
     - If you want to add special words to the spell list (like "PowerShell"), you have to manually add a `de.utf-8.add` file in the same directory where your other spell files are stored. NeoVim will then automatically also create a `de.utf-8.add.spl` file in the same directory.
     - This manual setup won't interfere with any spell files placed in the system-wide installation directory of NeoVim since it checks this directory and any custom directories if setup properly, therefore the default English spellchecks can still remain in their original place and don't need to be moved
     - I don't know how to set all this up for multiple additional languages
+- Using something like `event = { "BufReadPre", "BufNewFile" }` in a plugin config file will make sure that the plugin is only loaded when a buffer is opened or created. This is a good way to optimize the loading time of NeoVim, since not all plugins are needed at all times.
 
 ## Basic Usage
 
@@ -60,6 +61,7 @@ Not finished, still ongoing
 - Find out which fileformat you are using: `:set fileformat?` and `:set fileformats?`
   - the fileformat "dos" means, it uses the standard line ending format for Windows which would be `CRLF`. For unix the standard line ending format would be `LF`.
 - Use `<C-w>` to get to the `+window` menu, use `<C-w>25>` to increase the width by 25% or use `<C-w>5<` to decrease the width by 5% (or decrease height with `<C-w>-` or increase height with `<C-w>+`).
+- Check version of some plugin installed via Mason: `:!stylua --version`
 
 ### Buffers
 
@@ -94,6 +96,11 @@ Not finished, still ongoing
   This way you can basically just tweak the settings
   while still having all the base settings,
   the lazy vim extra implementation added.
+
+#### Conform
+
+- This is the main plugin used by LazyVim for formatting. Adjust the settings to set up different formatter and more.
+To have eslint formatting work, you still have to use none-ls and set it up there.
 
 #### File Management & File Searching (includes general commands)
 
@@ -173,6 +180,7 @@ Not finished, still ongoing
 - When deleting the nvim-data (for a full reinstall), remember to manually build the telescope-fzf-native and also run `:Lazy clean` and/or lazy sync and update if having additional problems that something couldn't properly load in.
 - When it seems like that the custom overwrites of some keys in the `<leader>` menu are back to their default, close and reopen the current nvim session.
 - When having trouble with the Rust DAP, check if `cpptools` and `codelldb` were successfully installed via Mason and check the config to see if the debug_path is actually the correct one (if the work directory makes use of nested directories for their binaries, the debug_path has to be adjusted). Or just use `cargo build` to create the needed binary
+- To have all formatters work correctly in .ts and similar files, make sure to have prettier as well prettier_d and eslint_d installed via Mason and also have prettier and eslint installed in your project. You can check the prettier version by running `:!prettier --version` (or `:!eslint_d --version` for eslint_d, for example). `conform.nvim` is for prettier (and other) `none-ls` is for eslint (and other).
 
 ## Ongoing ToDos
 
