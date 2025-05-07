@@ -63,6 +63,7 @@ Not finished, still ongoing
 - Use `<C-w>` to get to the `+window` menu, use `<C-w>25>` to increase the width by 25% or use `<C-w>5<` to decrease the width by 5% (or decrease height with `<C-w>-` or increase height with `<C-w>+`).
 - Check version of some plugin installed via Mason: `:!stylua --version`
 - If defined keymaps are missing, try re-applying them with `:lua ReapplyKeymaps()` (custom command from keymaps.lua config file).
+- Open `+ai` keymaps menu with `<leader>a`
 
 ### Buffers
 
