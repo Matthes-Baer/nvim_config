@@ -62,6 +62,7 @@ Not finished, still ongoing
   - the fileformat "dos" means, it uses the standard line ending format for Windows which would be `CRLF`. For unix the standard line ending format would be `LF`.
 - Use `<C-w>` to get to the `+window` menu, use `<C-w>25>` to increase the width by 25% or use `<C-w>5<` to decrease the width by 5% (or decrease height with `<C-w>-` or increase height with `<C-w>+`).
 - Check version of some plugin installed via Mason: `:!stylua --version`
+- If defined keymaps are missing, try re-applying them with `:lua ReapplyKeymaps()` (custom command from keymaps.lua config file).
 
 ### Buffers
 
@@ -114,8 +115,8 @@ To have eslint formatting work, you still have to use none-ls and set it up ther
 #### Telescope
 
 - Find all available pickers: `:Telescope`
-- `<leader>fg` for live_grep to look through the content of all files in the cwd
-- `<leader>fb` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
+- `<leader>ff` to open the Telescope find commands
+- `<leader>ffb` to get to file browser and select files via `Tab` and delete with `d` while in normal mode
   - Commands: `https://github.com/nvim-telescope/telescope-file-browser.nvim#Mappings`
   - Within the file browser use `c` in normal mode to create new folders and files
   - Within the file browser, use `r` to rename a file, `<S-r>` for replace
