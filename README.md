@@ -65,6 +65,7 @@ Not finished, still ongoing
 - Check version of some plugin installed via Mason: `:!stylua --version`
 - If defined keymaps are missing, try re-applying them with `:lua ReapplyKeymaps()` (custom command from keymaps.lua config file).
 - Open `+ai` keymaps menu with `<leader>a`
+- Besides like `e` and `b` you can also user their uppercase versions `E` and `B` to go to the next/previous space character. This is helpful for like URLs or similar situations where you would have to use multiple `e` or `b` commands to get through while with their uppercase versions you can just skip the whole URL, for example.
 
 ### Buffers
 
