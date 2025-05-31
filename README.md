@@ -34,6 +34,7 @@ Not finished, still ongoing
     - This manual setup won't interfere with any spell files placed in the system-wide installation directory of NeoVim since it checks this directory and any custom directories if setup properly, therefore the default English spellchecks can still remain in their original place and don't need to be moved
     - I don't know how to set all this up for multiple additional languages
 - Using something like `event = { "BufReadPre", "BufNewFile" }` in a plugin config file will make sure that the plugin is only loaded when a buffer is opened or created. This is a good way to optimize the loading time of NeoVim, since not all plugins are needed at all times.
+- This config repository also includes a `ftplugin` directory that is automatically detected by NeoVim. Inside that I have my `rust.vim` script with custom configs which I wasn't able to make work via the lsp configs - this file is also automatically detected and for the [Ft_rust plugin](https://neovim.io/doc/user/ft_rust.html#ft_rust.txt). There are other such already available NeoVim plugins which you can find via https://neovim.io/doc/user/
 
 ## Basic Usage
 
