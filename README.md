@@ -38,6 +38,18 @@ Not finished, still ongoing
 
 ## Basic Usage
 
+- Open a terminal at the bottom: `:belowright split | terminal`
+- Copy the full path to the clipboard: `:let @+=expand('%:p')`
+- Resize a window (8 lines as example): `:resize 8`
+- Resize a window vertically: `:vertical resize 30`
+- Replace anything in selected area: `s/replace/replace_with`
+- Add text via command line (for multi-select): `normal a` or `normal i`
+- With cursor on an opening or closing bracket, jump to the respective opening or closing bracket: `SHIFT + 5`
+- Search for next occurence of a character in the current line (backwards with uppercase): `f + search_for`
+- Search for next occurence of a character in the current line but place the cursor to the preceding position (backwards with uppercase): `t + search_for`
+- Repeat the preceding change: `.`
+- Enter a register/macro (register_key can be a-z): `q{register_key} + commands + q` -> use it with `@register_key`
+- Add/remove spaces at the start of a line (like `Tab` or `Shift + Tab`) (also works with multiple lines selected): Select lines and then `Shift>`/`Shift<`
 - `<C-o>` would be CTRL + o
 - `<s-down>` would be Shift + down_arrow
 - `<M-s>` would be meta key (oftentimes Alt key)
