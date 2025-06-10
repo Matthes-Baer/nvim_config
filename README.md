@@ -33,6 +33,7 @@ Not finished, still ongoing
     - If you want to add special words to the spell list (like "PowerShell"), you have to manually add a `de.utf-8.add` file in the same directory where your other spell files are stored. NeoVim will then automatically also create a `de.utf-8.add.spl` file in the same directory.
     - This manual setup won't interfere with any spell files placed in the system-wide installation directory of NeoVim since it checks this directory and any custom directories if setup properly, therefore the default English spellchecks can still remain in their original place and don't need to be moved
     - I don't know how to set all this up for multiple additional languages
+  - Add specific words to the spell file list: `zg`
 - Using something like `event = { "BufReadPre", "BufNewFile" }` in a plugin config file will make sure that the plugin is only loaded when a buffer is opened or created. This is a good way to optimize the loading time of NeoVim, since not all plugins are needed at all times.
 - This config repository also includes a `ftplugin` directory that is automatically detected by NeoVim. Inside that I have my `rust.vim` script with custom configs which I wasn't able to make work via the lsp configs - this file is also automatically detected and for the [Ft_rust plugin](https://neovim.io/doc/user/ft_rust.html#ft_rust.txt). There are other such already available NeoVim plugins which you can find via https://neovim.io/doc/user/
 
@@ -40,8 +41,6 @@ Not finished, still ongoing
 
 - Open a terminal at the bottom: `:belowright split | terminal`
 - Copy the full path to the clipboard: `:let @+=expand('%:p')`
-- Resize a window (8 lines as example): `:resize 8`
-- Resize a window vertically: `:vertical resize 30`
 - Replace anything in selected area: `s/replace/replace_with`
 - Add text via command line (for multi-select): `normal a` or `normal i`
 - With cursor on an opening or closing bracket, jump to the respective opening or closing bracket: `SHIFT + 5`
@@ -75,6 +74,9 @@ Not finished, still ongoing
 - Find out which fileformat you are using: `:set fileformat?` and `:set fileformats?`
   - the fileformat "dos" means, it uses the standard line ending format for Windows which would be `CRLF`. For unix the standard line ending format would be `LF`.
 - Use `<C-w>` to get to the `+window` menu, use `<C-w>25>` to increase the width by 25% or use `<C-w>5<` to decrease the width by 5% (or decrease height with `<C-w>-` or increase height with `<C-w>+`).
+  Or:
+  - Resize a window (8 lines as example): `:resize 8`
+  - Resize a window vertically: `:vertical resize 30`
 - Check version of some plugin installed via Mason: `:!stylua --version`
 - If defined keymaps are missing, try re-applying them with `:lua ReapplyKeymaps()` (custom command from keymaps.lua config file).
 - Open `+ai` keymaps menu with `<leader>a`
