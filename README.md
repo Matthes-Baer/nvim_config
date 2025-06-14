@@ -39,6 +39,7 @@ Not finished, still ongoing
 
 ## Basic Usage
 
+- `<leader>n` to open the notification history. This will include recent infos, warnings, and errors from the LSP, plugins, and NeoVim itself.
 - Open a terminal at the bottom: `:belowright split | terminal`
 - Copy the full path to the clipboard: `:let @+=expand('%:p')`
 - Replace anything in selected area: `s/replace/replace_with`
@@ -53,7 +54,7 @@ Not finished, still ongoing
 - `<s-down>` would be Shift + down_arrow
 - `<M-s>` would be meta key (oftentimes Alt key)
 - Use Mason (package manager for NeoVim) to install language servers, linters, formatters, and other developer tools
-- You can use `:cd` within NeoVim to switch the cwd
+- You can use `:cd` within NeoVim to switch the cwd. This will also automatically update the NeoTree view.
 - See the current cwd: `:pwd`
 - To set the cwd to the directory of the currently open file: `:cd %:p:h`
 - Use `<s-k>` on anything code-related holding information to get the info you probably know from VS Code when hovering over it
@@ -81,6 +82,7 @@ Not finished, still ongoing
 - If defined keymaps are missing, try re-applying them with `:lua ReapplyKeymaps()` (custom command from keymaps.lua config file).
 - Open `+ai` keymaps menu with `<leader>a`
 - Besides like `e` and `b` you can also user their uppercase versions `E` and `B` to go to the next/previous space character. This is helpful for like URLs or similar situations where you would have to use multiple `e` or `b` commands to get through while with their uppercase versions you can just skip the whole URL, for example.
+- Use `:Gitsigns` to see all corresponding commands (`toggle_current_line_blame` is probably the most important in most situations).
 
 ### Buffers
 
@@ -157,6 +159,20 @@ To have eslint formatting work, you still have to use none-ls and set it up ther
 #### Diffview
 
 - Use `:DiffviewOpen` to open the merge-conflict resolver tool, use `:h diffview-merge-tool` to get information on how to use it more effectively
+- Use `:DiffviewClose` to leave the Diffview mode.
+- You can use `g?` within Diffview to see all commands.
+- Some of the most important commands within Diffview:
+  - g<C-x> -> Cycle available layouts
+  - ]x -> Go to the next conflict
+  - [x -> Go to the previous conflict
+  - i -> Toggle between 'list' and 'tree' views
+  - s -> Stage / unstage the selected entry
+  - "-" (dash symbol) -> Stage / unstage the selected entry
+  - X -> Restore entry to the state on the left side
+  - <leader>cA -> Choose all the versions of a conflict for the whole file
+  - <leader>cB -> Choose the BASE version of a conflict for the whole file
+  - <leader>cO -> Choose the OURS version of a conflict for the whole file
+  - <leader>cT -> Choose the THEIRS version of a conflict for the whole file
 
 #### Comment
 
@@ -204,7 +220,6 @@ To have eslint formatting work, you still have to use none-ls and set it up ther
 ## Ongoing ToDos
 
 - Some plugin is breaking with gitsigns in a version around the 29th of April 2025, I put in a commit hash of a version a week prior to this, to fix this. Try to remove the hard-code commit hash to update to the newest version in the near future and check if it's still broken.
-- Gitsigns toggle_current_line_blame not working?
 - Find package/configuration to automatically adjust imports if files are moved to different directories
   - potential source: https://www.reddit.com/r/neovim/comments/187wwfa/anything_in_neovim_land_that_can_update_js/
 - NeoTest seems to be broken right now (at least for jest), find fix or alternative? test.core is a Lazy Extra an works with Neotree I think?
