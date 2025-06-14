@@ -162,17 +162,17 @@ To have eslint formatting work, you still have to use none-ls and set it up ther
 - Use `:DiffviewClose` to leave the Diffview mode.
 - You can use `g?` within Diffview to see all commands.
 - Some of the most important commands within Diffview:
-  - g<C-x> -> Cycle available layouts
-  - ]x -> Go to the next conflict
-  - [x -> Go to the previous conflict
-  - i -> Toggle between 'list' and 'tree' views
-  - s -> Stage / unstage the selected entry
-  - "-" (dash symbol) -> Stage / unstage the selected entry
-  - X -> Restore entry to the state on the left side
-  - <leader>cA -> Choose all the versions of a conflict for the whole file
-  - <leader>cB -> Choose the BASE version of a conflict for the whole file
-  - <leader>cO -> Choose the OURS version of a conflict for the whole file
-  - <leader>cT -> Choose the THEIRS version of a conflict for the whole file
+  - `g<C-x>` -> Cycle available layouts
+  - `]x` -> Go to the next conflict
+  - `[x` -> Go to the previous conflict
+  - `i` -> Toggle between 'list' and 'tree' views
+  - `s` -> Stage / unstage the selected entry
+  - `-` (dash symbol) -> Stage / unstage the selected entry
+  - `X` -> Restore entry to the state on the left side
+  - `<leader>cA` -> Choose all the versions of a conflict for the whole file
+  - `<leader>cB` -> Choose the BASE version of a conflict for the whole file
+  - `<leader>cO` -> Choose the OURS version of a conflict for the whole file
+  - `<leader>cT` -> Choose the THEIRS version of a conflict for the whole file
 
 #### Comment
 
