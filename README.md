@@ -85,6 +85,20 @@ Not finished, still ongoing
 - Use `:Gitsigns` to see all corresponding commands (`toggle_current_line_blame` is probably the most important in most situations).
 - Use `:e` in your current buffer to reload the file. This might be useful if the buffer is opened without content due to some out-of-sync or similar issue.
 
+### LSP
+
+A LSP, or Language Server Protocol, is a standardized way for code editors (like Neovim, VS Code, etc.) to communicate with language-specific servers that provide programming language features. These features include things like code completion, go-to-definition, linting (error checking), formatting, and more.
+
+Instead of every editor building support for every language from scratch, the LSP lets editors talk to a language server that knows how to analyze code and provide smart features. This makes it easier to add rich language support to any editor without duplicating work. So, the LSP is basically a bridge between your editor and language tooling, enabling a smoother and more consistent coding experience.
+
+### eslint_d and eslint-lsp
+
+eslint_d is a fast, daemonized version of ESLint that runs as a background process to speed up linting tasks by avoiding the overhead of starting a new ESLint process every time. It’s mainly used as a command-line tool or integrated into editor workflows to quickly lint and fix files. It does not provide language server protocol (LSP) features like diagnostics or code actions natively; instead, it’s just a faster way to run ESLint commands.
+
+eslint LSP (like eslint-lsp or the LSP server that nvim-lspconfig calls eslint) is a Language Server Protocol implementation that integrates ESLint directly with your editor via LSP. It provides rich IDE-like features such as real-time diagnostics, auto-fixing on save, and code actions within the editor. This server internally runs ESLint (and can use eslint_d if configured) but exposes ESLint’s capabilities over LSP.
+
+You typically don’t need both separately in your Neovim setup. Using the eslint LSP server alone is usually enough because it handles diagnostics and fixes within the editor and can be configured to use eslint_d for speed behind the scenes. You might still install eslint_d globally or locally as a dependency because the LSP server can leverage it for performance, but from a configuration standpoint, the LSP server is what you integrate into Neovim. So in short: install eslint_d for speed if you want, but configure and use the eslint LSP in Neovim — no need to manually run eslint_d separately inside Neovim.
+
 ### Buffers
 
 - All buffer commands: `<leader>b`

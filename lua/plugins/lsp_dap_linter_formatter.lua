@@ -2,7 +2,40 @@ return {
   -- Core LSP Config
   {
     "neovim/nvim-lspconfig",
+    config = function()
+      local lspconfig = require("lspconfig")
+      local mason_lspconfig = require("mason-lspconfig")
+
+      -- Make eslint use the current working directory's eslint version
+      lspconfig.eslint.setup({
+        settings = {
+          workingDirectory = { mode = "auto" },
+        },
+        -- on_attach = function(client, bufnr)
+        --   -- Optional: Fix on save
+        --   if client.name == "eslint" then
+        --     vim.api.nvim_create_autocmd("BufWritePre", {
+        --       buffer = bufnr,
+        --       command = "EslintFixAll",
+        --     })
+        --   end
+        -- end,
+      })
+
+      mason_lspconfig.setup_handlers({
+        function(server_name) -- default handler (applies to all servers without a dedicated handler)
+          if server_name ~= "eslint" then
+            lspconfig[server_name].setup({})
+          end
+        end,
+        -- You can add special handlers here if needed, e.g. for tsserver
+        -- ["tsserver"] = function()
+        --   lspconfig.tsserver.setup({})
+        -- end,
+      })
+    end,
   },
+
   -- Mason (Package Manager)
   {
     "williamboman/mason.nvim",
@@ -10,6 +43,7 @@ return {
       require("mason").setup()
     end,
   },
+
   -- Mason LSP (Auto-install LSPs)
   {
     "williamboman/mason-lspconfig.nvim",
@@ -137,7 +171,6 @@ return {
   { "nvim-telescope/telescope-dap.nvim" }, -- Telescope UI for debugging
 
   -- None-LS
-  -- This is needed to have eslint's fix work on save
   {
     "nvimtools/none-ls.nvim",
     dependencies = {
@@ -148,9 +181,9 @@ return {
 
       null_ls.setup({
         sources = {
-          -- still useful for diagnostics and code actions
-          require("none-ls.diagnostics.eslint_d"),
-          require("none-ls.code_actions.eslint_d"),
+          -- This is needed to have eslint's fix work on save
+          -- require("none-ls.diagnostics.eslint_d"),
+          -- require("none-ls.code_actions.eslint_d"),
 
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.shfmt,
@@ -174,10 +207,10 @@ return {
       log_level = vim.log.levels.DEBUG,
       formatters_by_ft = {
         lua = { "stylua" },
-        javascript = { "eslint_d", "prettierd" },
-        typescript = { "eslint_d", "prettierd" },
-        typescriptreact = { "eslint_d", "prettierd" },
-        javascriptreact = { "eslint_d", "prettierd" },
+        javascript = { "eslint", "prettierd" },
+        typescript = { "eslint", "prettierd" },
+        typescriptreact = { "eslint", "prettierd" },
+        javascriptreact = { "eslint", "prettierd" },
 
         -- Use the "_" filetype to run formatters on filetypes that don't
         -- have other formatters configured.
