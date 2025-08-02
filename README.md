@@ -83,6 +83,7 @@ Not finished, still ongoing
 - Open `+ai` keymaps menu with `<leader>a`
 - Besides like `e` and `b` you can also user their uppercase versions `E` and `B` to go to the next/previous space character. This is helpful for like URLs or similar situations where you would have to use multiple `e` or `b` commands to get through while with their uppercase versions you can just skip the whole URL, for example.
 - Use `:Gitsigns` to see all corresponding commands (`toggle_current_line_blame` is probably the most important in most situations).
+- Use `:e` in your current buffer to reload the file. This might be useful if the buffer is opened without content due to some out-of-sync or similar issue.
 
 ### Buffers
 

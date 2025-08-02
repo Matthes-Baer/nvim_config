@@ -39,6 +39,11 @@ return {
     },
     config = function()
       require("telescope").setup({
+        defaults = {
+          prompt_prefix = "🔍 ", -- Custom prompt prefix
+          initial_mode = "insert", -- Start in insert mode
+          path_display = { "absolute" },
+        },
         extensions = {
           fzf = {
             -- These are default values, they are just added for easier adjustments if needed
