@@ -192,9 +192,10 @@ To have eslint formatting work, you still have to use none-ls and set it up ther
 
 #### Comment
 
-- Use `gc` to open comment command menu
-- Use `gcc` for single line commenting in/out (can also be used with multi-select (`v`))
-- Use `gb` for block commenting in/out
+- Use `gc` to open comment command menu (used for: add comments above/below/end of line, ..)
+  - Or use select (`v`) and then use `gc` to directly use single-/multi-line commenting
+    - When you have commented out something, it's important to start the select at the first commenting out symbol before commenting it back in again. Otherwise, you might just comment out the comment again (double commented out)
+- Use `gcc` for single line commenting in/out
 
 #### GitHub Copilot
 
