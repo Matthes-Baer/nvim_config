@@ -39,6 +39,7 @@ Not finished, still ongoing
 
 ## Basic Usage
 
+- `<C-g>` to find out what the current file's path is
 - `<leader>n` to open the notification history. This will include recent infos, warnings, and errors from the LSP, plugins, and NeoVim itself.
 - Open a terminal at the bottom: `:belowright split | terminal`
 - Copy the full path to the clipboard: `:let @+=expand('%:p')`
@@ -160,6 +161,7 @@ To have eslint formatting work, you still have to use none-ls and set it up ther
 #### NeoTree
 
 - Use `<leader>e` to open NeoTree
+- Use `<leader>Neotree reveal` to open the current file in NeoTree (use this to find files without NeoTree and then reveal it in NeoTree)
 - Use `<s-?>` to see all commands in NeoTree
 - Use `<S-h>` to toggle showing hidden items while on the NeoTree screen
 - Use `<S-r>` to reload (when new files were created, for example)
