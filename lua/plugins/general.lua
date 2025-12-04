@@ -229,11 +229,13 @@ return {
         },
         copilot_node_command = "node", -- Node.js version must be > 20
         workspace_folders = {},
-        copilot_model = "", -- Current LSP default is gpt-35-turbo, supports gpt-4o-copilot
+        copilot_model = "gpt-4o", -- Current LSP default is gpt-35-turbo, supports gpt-4o-copilot
         root_dir = function()
           return vim.fs.dirname(vim.fs.find(".git", { upward = true })[1])
         end,
         should_attach = function(_, _)
+          local logger = require("copilot.logger")
+
           if not vim.bo.buflisted then
             logger.debug("not attaching, buffer is not 'buflisted'")
             return false
@@ -253,5 +255,22 @@ return {
         server_opts_overrides = {},
       })
     end,
+  },
+  -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken",
+    opts = {
+      model = "gpt-4o", -- AI model to use
+      temperature = 0.1, -- Lower = focused, higher = creative
+      window = {
+        layout = "float", -- 'vertical', 'horizontal', 'float'
+        width = 0.5, -- 50% of screen width
+      },
+      auto_insert_mode = true, -- Enter insert mode when opening
+    },
   },
 }
