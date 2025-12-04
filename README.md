@@ -207,12 +207,14 @@ To have eslint formatting work, you still have to use none-ls and set it up ther
 - Dismiss suggestion: `<C-]>` or `<Esc>`
 - Show next suggestion: `<M-]>`
 - Show previous suggestion: `<M-[>`
+- Open CopilotChat: `:CopilotChat` or `<leader>aa`
 
 #### LazyGit
 
 - LazyGit Commands: https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features
   - `p` for pulling, `<s-p>` for Pushing, `q` to leave
   - Use `<S-↑|↓>` (arrow keys) to select multiple commits, for example
+  - Use `Enter` to enter a file and use `Esc` to leave this file
 
 #### Lazydocker
 
@@ -244,13 +246,8 @@ To have eslint formatting work, you still have to use none-ls and set it up ther
 - NeoTest seems to be broken right now (at least for jest), find fix or alternative? test.core is a Lazy Extra an works with Neotree I think?
 - Test more with Debug for Rust and Node and apply fixes if needed
 - Add more notes for Diffview Merge Conflict Resolver, LazyGit, Lazydocker, and more
-- Try out GitHub Copilot (inline edits) and note down most important commands
-  - Same for GitHub Copilot Chat (separate plugin)
-  - both plugins are enabled via LazyVim Extras (with not custom configs right now)
-- Fix NeoTree move command (`m`)
 - Potentially add a shortcut command for this step:
   - When in `terminal` mode use `CTRL + ALT + ß` and then `<C-n>` to leave the `terminal` mode and switch to `normal` mode
-- ? Are there any additional configurations needed to remove unused imports or format them or is it sufficient to have the proper eslint/prettier configs for this?
 - Bring nvim commands from general personal doc to this documentation
 - Configure keymaps for https://github.com/monaqa/dial.nvim
 - Configure keymaps for https://github.com/gbprod/yanky.nvim
