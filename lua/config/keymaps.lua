@@ -55,6 +55,10 @@ function M.setup()
   vim.keymap.set("n", "<S-F11>", function()
     dap.step_out()
   end)
+
+  -- Oil
+  local oil = require("oil")
+  vim.keymap.set("n", "<leader>e", oil.open, { desc = "Open Oil file explorer" })
 end
 
 -- 1. Apply immediately on start

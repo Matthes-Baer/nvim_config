@@ -174,6 +174,9 @@ To have eslint formatting work, you still have to use none-ls and set it up ther
 - `o` to order files
 - `i` to get file information
 
+#### [Oil](https://neovimcraft.com/plugin/stevearc/oil.nvim/)
+- As alternative to NeoTree the config currently also includes oil.nvim. Since I prefer this over NeoTree, I overwrote the `<leader>e` keymap of NeoTree to open oil.
+
 #### Diffview
 
 - Use `:DiffviewOpen` to open the merge-conflict resolver tool, use `:h diffview-merge-tool` to get information on how to use it more effectively
