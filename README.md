@@ -39,6 +39,7 @@ Not finished, still ongoing
 
 ## Basic Usage
 
+- `<leader>ss` to find a function in the current buffer
 - `<C-g>` to find out what the current file's path is
 - `<leader>n` to open the notification history. This will include recent infos, warnings, and errors from the LSP, plugins, and NeoVim itself.
 - Open a terminal at the bottom: `:belowright split | terminal`
@@ -138,7 +139,7 @@ You typically don’t need both separately in your Neovim setup. Using the eslin
 #### Conform
 
 - This is the main plugin used by LazyVim for formatting. Adjust the settings to set up different formatter and more.
-To have eslint formatting work, you still have to use none-ls and set it up there.
+  To have eslint formatting work, you still have to use none-ls and set it up there.
 
 #### File Management & File Searching (includes general commands)
 
@@ -175,6 +176,7 @@ To have eslint formatting work, you still have to use none-ls and set it up ther
 - `i` to get file information
 
 #### [Oil](https://neovimcraft.com/plugin/stevearc/oil.nvim/)
+
 - As alternative to NeoTree the config currently also includes oil.nvim. Since I prefer this over NeoTree, I overwrote the `<leader>e` keymap of NeoTree to open oil.
 
 #### Diffview

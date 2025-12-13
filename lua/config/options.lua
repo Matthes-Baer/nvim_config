@@ -5,6 +5,12 @@
 -- Bring vim.opt into scope
 local options = vim.opt
 
+local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+
+if not string.find(vim.env.PATH, mason_bin, 1, true) then
+  vim.env.PATH = mason_bin .. ";" .. vim.env.PATH
+end
+
 -- Add German to spell check languages besides English as default
 options.spelllang = { "en", "de" }
 options.spell = true
@@ -35,7 +41,9 @@ vim.o.completeopt = "menu,menuone,noselect,noinsert,popup"
 
 -- Enable the option to require a Prettier config file
 -- If no prettier config file is found, the formatter will not be used
-vim.g.lazyvim_prettier_needs_config = true
+-- vim.g.lazyvim_prettier_needs_config = true
+
+vim.g.lazyvim_prettier = false
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -43,4 +51,24 @@ vim.diagnostic.config({
   underline = true,
   update_in_insert = false,
   severity_sort = true,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client then
+      return
+    end
+
+    -- ESLint: diagnostics only (no formatting)
+    if client.name == "eslint" then
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+    end
+
+    -- TypeScript / TSX: disable semantic tokens (fix rainbow highlighting)
+    if client.name == "tsserver" or client.name == "typescript-tools" then
+      client.server_capabilities.semanticTokensProvider = nil
+    end
+  end,
 })
