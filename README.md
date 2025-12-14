@@ -233,6 +233,7 @@ You typically don’t need both separately in your Neovim setup.
 
 # Troubleshooting
 
+- When your package.json is "stuck" in terms of "rewrite ... not permitted" or similar when trying to install/update etc. some package via pnpm/npm etc. in your project, you can close all processes that lock the package.json since this error oftentimes occurs when you have the project opened in both NeoVim and VS code. To do this, use `Windows + r`, then search for `resmon`, then toggle all processes in "CPU" and search for "package.json", then close the process/es found
 - When having eslint problems in projects which don't use the same eslint version you have installed via Mason, try rolling back your Mason version.
   - e.g. eslint*d v14 uses eslint v9 which comes with breaking changes for the config file format. Check your version with `:lua print(vim.fn.exepath("eslint_d"))` (then `\_path*\mason\bin\eslint_d.CMD --version`) and roll back by using `MasonInstall eslint_d@13.1.2`, for example, if updating the project's eslint is not an option. eslint_d is for real-time linting feedbacks, while using scripts with like `pnpm run lint` use the installed eslint modules to show the summarized linting results of the target directories in your terminal.
 - If packages seem broken, try deleting the corresponding nvim-data folder section and restart nvim to trigger a full reinstall
