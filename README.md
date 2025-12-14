@@ -63,7 +63,7 @@ Not finished, still ongoing
 - Use `:LspRestart` to restart the LSP tool. Use `:LspInfo` for more information on it.
 - Add specific words to the spell file list: `zg` (not with `:`, just press `zg`, while the cursor is on the word)
 - Window Resizing with `<C-w><Left>`, `<C-w><Right>`, `<C-w><Up>`, and `<C-w><Down>`
-- Use `<C-x><C-o>` in normal mode to trigger code completion suggestion (Omni Completion) - seems to not always work
+- Use `<C-xo>` in insert mode to trigger code completion suggestion (Omni Completion), e.g. when inside an object to find out the available properties
 - Open `+code` menu with `<leader>c`. Use `<leader>ca` for code actions (for auto-import, for example, like in VS Code).
 - Open the `+goto` menu with `g` -> e.g. jump to the file where a React component is defined with `gd` while the cursor is on the component's name.
   - also used for any other "go to definition" situations
