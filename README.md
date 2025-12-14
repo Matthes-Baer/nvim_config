@@ -100,7 +100,7 @@ eslint_d is a fast, daemonized version of ESLint that runs as a background proce
 
 eslint LSP (like eslint-lsp or the LSP server that nvim-lspconfig calls eslint) is a Language Server Protocol implementation that integrates ESLint directly with your editor via LSP. It provides rich IDE-like features such as real-time diagnostics, auto-fixing on save, and code actions within the editor. This server internally runs ESLint (and can use eslint_d if configured) but exposes ESLint’s capabilities over LSP.
 
-You typically don’t need both separately in your Neovim setup. Using the eslint LSP server alone is usually enough because it handles diagnostics and fixes within the editor and can be configured to use eslint_d for speed behind the scenes. You might still install eslint_d globally or locally as a dependency because the LSP server can leverage it for performance, but from a configuration standpoint, the LSP server is what you integrate into Neovim. So in short: install eslint_d for speed if you want, but configure and use the eslint LSP in Neovim — no need to manually run eslint_d separately inside Neovim.
+You typically don’t need both separately in your Neovim setup.
 
 ### Buffers
 
@@ -234,7 +234,7 @@ You typically don’t need both separately in your Neovim setup. Using the eslin
 # Troubleshooting
 
 - When having eslint problems in projects which don't use the same eslint version you have installed via Mason, try rolling back your Mason version.
-  - e.g. eslint_d v14 uses eslint v9 which comes with breaking changes for the config file format. Check your version with `:!eslint_d --version` and roll back by using `MasonInstall eslint_d@13.1.2`, for example, if updating the project's eslint is not an option. eslint-lsp and eslint_d are for real-time linting feedbacks, while using scripts with like `pnpm run lint` use the installed eslint modules to show the summarized linting results of the target directories in your terminal.
+  - e.g. eslint*d v14 uses eslint v9 which comes with breaking changes for the config file format. Check your version with `:lua print(vim.fn.exepath("eslint_d"))` (then `\_path*\mason\bin\eslint_d.CMD --version`) and roll back by using `MasonInstall eslint_d@13.1.2`, for example, if updating the project's eslint is not an option. eslint_d is for real-time linting feedbacks, while using scripts with like `pnpm run lint` use the installed eslint modules to show the summarized linting results of the target directories in your terminal.
 - If packages seem broken, try deleting the corresponding nvim-data folder section and restart nvim to trigger a full reinstall
   - `Remove-Item -Recurse -Force "$env:LOCALAPPDATA\nvim-data\lazy\nvim-treesitter"` for example (on Windows)
 - When using Rust with the rust-analyzer LSP plugin and you have an `proc-macro not been built yet` error, try `cargo check` in the terminal and then saving/reloading the file

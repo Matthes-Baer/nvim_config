@@ -60,15 +60,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return
     end
 
-    -- ESLint: diagnostics only (no formatting)
+    -- I use eslint_d, thus, don't attach eslint to any buffer (this comes from nvim-lspconfig I think (even if not imported as lazyvim extra, but it's managed through nvim-lspconfig automatically))
     if client.name == "eslint" then
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
+      vim.lsp.stop_client(client.id)
     end
+
+    -- ESLint: diagnostics only (no formatting)
+    -- if client.name == "eslint" then
+    --   client.server_capabilities.documentFormattingProvider = false
+    --   client.server_capabilities.documentRangeFormattingProvider = false
+    -- end
 
     -- TypeScript / TSX: disable semantic tokens (fix rainbow highlighting)
     if client.name == "tsserver" or client.name == "typescript-tools" then
       client.server_capabilities.semanticTokensProvider = nil
+    end
+
+    -- disable inlay hints
+    if client.server_capabilities.inlayHintProvider then
+      client.server_capabilities.inlayHintProvider = false
     end
   end,
 })

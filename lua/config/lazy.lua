@@ -20,12 +20,20 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim",                                    import = "lazyvim.plugins" },
+    { "LazyVim/LazyVim",                                import = "lazyvim.plugins" },
 
     -- Enable the extra for `none-ls` for formatting and linting
-    -- { import = "lazyvim.plugins.extras.lsp.none-ls" },
-    { import = "lazyvim.plugins.extras.linting.eslint" },
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
+    { import = "lazyvim.plugins.extras.lsp.none-ls" },
+
+    -- This would add eslint via Mason, I think (but I actually want to use eslint_d)
+    -- { import = "lazyvim.plugins.extras.linting.eslint" },
+
+    -- This would add prettier via Mason, I think (but I actually want to use prettierd)
+    -- { import = "lazyvim.plugins.extras.formatting.prettier" },
+
+    -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
+    { import = "lazyvim.plugins.extras.lang.typescript" },
+
 
     -- import/override with your plugins
     -- This imports all files from the plugins directory

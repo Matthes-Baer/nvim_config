@@ -313,10 +313,10 @@ return {
           "pyright",                         -- Python
           "jsonls",                          -- JSON
           "html",                            -- HTML
-          "eslint",                          -- ESLint
           "cssls",                           -- CSS
           "dockerls",                        -- Dockerfile
           "docker_compose_language_service", -- Docker Compose
+          "ts_ls"                            -- TypeScript
         },
         automatic_installation = true,
       })
@@ -423,6 +423,31 @@ return {
   { "rcarriga/nvim-dap-ui",             dependencies = { "mfussenegger/nvim-dap" } },
 
   { "nvim-telescope/telescope-dap.nvim" }, -- Telescope UI for debugging
+
+  -- none-ls (originally null-ls) LSP for anything that doesn't really have LSP (eslint_d)
+  -- https://github.com/nvimtools/none-ls.nvim
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = {
+      "nvimtools/none-ls-extras.nvim",
+      "nvim-lua/plenary.nvim"
+    },
+    config = function()
+      local null_ls = require("null-ls")
+
+      null_ls.setup({
+        sources = {
+          -- This is needed to have eslint's fix work on save
+          require("none-ls.diagnostics.eslint_d"),
+          require("none-ls.code_actions.eslint_d"),
+
+          null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.shfmt,
+          null_ls.builtins.formatting.clang_format,
+        },
+      })
+    end,
+  },
 
   {
     "stevearc/conform.nvim",
